@@ -3,10 +3,20 @@
     <head>
         <meta charset="utf-8">
         <title></title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/style.css">
         <link rel='stylesheet' href='https://storage.googleapis.com/code.getmdl.io/1.0.4/material.indigo-pink.min.css'>
     </head>
     <body>
+      <?php
+
+      if (!empty($_GET['cn'])) {
+         echo "Bonjour" . $_GET['cn'];
+      }elseif (isset($_GET['Error'])) {
+         if ($_GET['Error'] == 1) {
+            echo "Veuillez rentrez des identifiant valide";
+         }
+      }
+      ?>
 
 
           <div class="mdl-grid">
@@ -31,6 +41,9 @@
                   <button id="login" type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">
                     Login
                   </button>
+                  <!-- <button id="forgot" type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">
+                    Forgot Password
+                  </button> -->
                 </div>
               </form>
             </div>
@@ -39,6 +52,5 @@
       </div>
 
       <script src='https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js'></script>
-        <!-- <script  src="js/index.js"></script> -->
     </body>
 </html>

@@ -3,5 +3,7 @@
 include_once ('functions.php');
 
 if (connection()){
-    echo "veuillez rentrée un identifiant ou un mot de passe valide !";
+   header("Location: index.php?cn=$user");
+}else {
+   header('Location: index.php?Error='.true);
 }

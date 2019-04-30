@@ -1,55 +1,83 @@
 <?php
 
 function connection (){
-    if (isset($_POST['username']) && isset($_POST['password'])) {
+
+      include("conf.php");
+
+      if (!empty($_POST['username']) && !empty($_POST['password'])) {
 
     // Eléments d'authentification LDAP
-        $ldapusrn = $_POST['username'];     // DN ou RDN LDAP
+        $ldapusr= $_POST['username'];     // DN ou RDN LDAP
         $ldappass = $_POST['password'];  // Mot de passe
-
-   // LDAP variables
-         $ldaphost = "ldap.example.com";  // serveur LDAP
-         $ldapport = 389;                 // port de serveur LDAP
 
     // Connexion au serveur LDAP
         $ldapconn = ldap_connect($ldaphost,$ldapport);
-        or die("Impossible de se connecter au serveur LDAP.");
         echo 'Le résultat de connexion est ' . $ldapconn . '<br />';
 
         if ($ldapconn) {
-            echo 'Liaison ...';
+            echo 'Liaison ...<br />';
+            ldap_set_option($ldapconn, LDAP_OPT_PROTOCOL_VERSION, 3);
             // Connexion au serveur LDAP
-            $ldapbind = ldap_bind($ldapconn);
+            echo $ldapUsrAdmin . '<br />';
+            echo $ldapPassAdmin . '<br />';
+            $ldapbind = ldap_bind($ldapconn,$ldapUsrAdmin,$ldapPassAdmin);
+            var_dump($ldapbind);
             echo 'Le résultat de connexion est ' . $ldapbind . '<br />';
             // Vérification de l'authentification
             if ($ldapbind) {
-               identification($ldapconn,$ldapusrn,$ldappass);
+               if(identification($ldapconn,$ldapusr,$ldappass)){
+                  ldap_close($ldapconn);
+                  return true;
+               }else {
+                  return false;
+               }
             } else {
                 echo "Connexion LDAP échouée...";
+                ldap_close($ldapconn);
+                return false;
             }
+        }else {
+           die("Impossible de se connecter au serveur LDAP.");
         }
     }else{
-        return false;
+       return false;
     }
 }
 
-function identification ($ldapconn,$ldapusrn,$ldappass){
-   echo "Connexion LDAP réussie...";
+function identification ($ldapconn,$ldapusr,$ldappass){
 
-   echo 'Recherchons (sn=S*) ...';                       //changer sn par identifiant et S*
-   $sr=ldap_search($ldapconn, "o=My Company, c=US", "sn=S*");  // modifier o, c et sn
+   include("conf.php");
+
+   echo "Connexion LDAP réussie..."."<br />";
+   echo "Recherchons (givenname=$ldapusr) ..."."<br />";                     //ce que nous allons chercher
+   $sr=ldap_search($ldapconn, $baseDnAuth, "(&(objectClass=*)(givenname=$ldapusr))");  // requete search
    echo 'Le résultat de la recherche est ' . $sr . '<br />';
 
    echo 'Le nombre d\'entrées retournées est ' . ldap_count_entries($ldapconn,$sr). '<br />';
-
+   if (ldap_count_entries($ldapconn,$sr)== 0) {
+      return false;
+   }
    echo 'Lecture des entrées ...<br />';
    $info = ldap_get_entries($ldapconn, $sr);
    echo 'Données pour ' . $info["count"] . ' entrées:<br />';
-
    for ($i=0; $i<$info["count"]; $i++) {
       echo 'dn est : ' . $info[$i]["dn"] . '<br />';
       echo 'premiere entree cn : ' . $info[$i]["cn"][0] . '<br />';
-      echo 'premier email : ' . $info[$i]["mail"][0] . '<br />';
+      echo 'premiere entree sn : ' . $info[$i]["sn"][0] . '<br />';
+      echo 'premiere entree password : ' . $info[$i]["userpassword"][0] . '<br />';
+   }
+   $user = $info[0]["dn"];
+   echo $user."<br />";
+   $attr = "userpassword";
+   $ldappass = base64_encode($passEncode($ldappass, TRUE ));
+   $ldappass = $passEncodePrefix.$ldappass;
+   if (ldap_compare($ldapconn, $user, $attr, $ldappass)) {
+      $user = $info[0]["cn"][0];
+      echo "connexion reussi";
+      return true;
+   }else {
+      echo "Identifiant ou Mot de passe incorrect !";
+      return false;
    }
    // Fermeture de la connexion
    ldap_close($ldapconn);

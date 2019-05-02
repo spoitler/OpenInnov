@@ -1,9 +1,9 @@
 <?php
 
 include_once ('functions.php');
-
-if (connection()){
-   header("Location: index.php?cn=$user");
+$auth = connection();
+if ($auth){
+   header("Location: index.php?cn=$auth");
 }else {
    header('Location: index.php?Error='.true);
 }

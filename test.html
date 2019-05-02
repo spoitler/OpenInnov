@@ -1,23 +1,14 @@
 <!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-        <link rel="stylesheet" href="css/style.css">
-        <link rel='stylesheet' href='https://storage.googleapis.com/code.getmdl.io/1.0.4/material.indigo-pink.min.css'>
-    </head>
-    <body>
-      <?php
-         if (!empty($_GET['cn'])) {
-            echo "Bonjour <strong>" . $_GET['cn'] . "</strong>";
-         }elseif (isset($_GET['Error'])) {
-            if ($_GET['Error'] == 1) {
-               echo '<span id="Error">Veuillez rentrer des identifiants valide</span>';
-            }
-         }
-      ?>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title></title>
+      <link rel="stylesheet" href="test.css">
+       <link rel='stylesheet' href='https://storage.googleapis.com/code.getmdl.io/1.0.4/material.indigo-pink.min.css'>
+   </head>
+   <body>
       <div id="container-auth">
-         <li class="gradient--5">
+         <li class="gradient--13">
            <div class="gradient"></div>
            <div class="start-color"></div>
            <div class="end-color"></div>
@@ -53,5 +44,5 @@
          </div>
       </div>
       <script src='https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js'></script>
-    </body>
+   </body>
 </html>

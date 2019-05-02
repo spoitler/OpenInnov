@@ -25,9 +25,10 @@ function connection (){
             echo 'Le résultat de connexion est ' . $ldapbind . '<br />';
             // Vérification de l'authentification
             if ($ldapbind) {
-               if(identification($ldapconn,$ldapusr,$ldappass)){
+               $user = identification($ldapconn,$ldapusr,$ldappass);
+               if($user){
                   ldap_close($ldapconn);
-                  return true;
+                  return $user;
                }else {
                   return false;
                }
@@ -74,7 +75,8 @@ function identification ($ldapconn,$ldapusr,$ldappass){
    if (ldap_compare($ldapconn, $user, $attr, $ldappass)) {
       $user = $info[0]["cn"][0];
       echo "connexion reussi";
-      return true;
+      echo $user;
+      return $user;
    }else {
       echo "Identifiant ou Mot de passe incorrect !";
       return false;

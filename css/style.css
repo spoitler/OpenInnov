@@ -51,34 +51,31 @@ li {
    color: red;
 }
 
-
 .main-container-projets{
    position: relative;
    top: 120px;
-   /* height: auto;
-   width: 100%; */
+   height: auto;
+   width: 100%;
    text-align: center;
    /* display: flex;
    flex-wrap: wrap;
-   justify-content: center; */
+   justify-content: center;*/
+}
+
+.main-container-projets h3{
+   font-size: 12px;
+   padding-left: 10px;
+   margin: 0;
 }
 
 .container-projet{
    display: inline-block;
-   margin: 0 10px 30px 10px;
-   width: 42%;
+   margin: 0 5px 30px 5px;
+   width: 44%;
    max-width: 450px;
    background-color: #eee;
    border-radius: 10px;
-
-
-   /* display: inline-block;
-   margin: 0 10px 30px 10px;
-   width: 45%;
-   max-width: 450px;
-
    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.06);
-    */
 }
 
 .title{
@@ -88,40 +85,40 @@ li {
    width: 90%;
    background-color: #3f51b5;
    border-radius: 10px;
-   text-align: center;
    color: #fff;
-   font-size: 12px;
+   font-size: 9px;
    height: auto;
-   min-height: 50px;
    line-height: 50px;
 }
 
+.description-projet{
+   height: auto;
+   width: 100%;
+   font-size: 10px;
+   text-align: left;
+   margin-top: 20px;
+}
 
+.description-projet p{
+   padding: 0 10px 0 10px;
+   line-height: 1.4em;
+}
 
+.chef-Projet{
+   display: flex;
+   vertical-align: middle;
+   font-size: 10px;
+   margin-top: 20px;
+   margin: 30px 0 20px 0;
+   position: relative;
+}
 
-
-
-
-
+.chef-Projet p{
+   margin: 0;
+}
 
 
 /*
-.main-container-projet{
-   position: absolute;
-   top: 120px;
-   height: auto;
-   width: 100%;
-   border-radius: 10px;
-   text-align: center;
-}
-
-.container-projet{
-   display: inline-block;
-   margin: 0 10px 30px 10px;
-   width: 90%;
-   background-color: #eee/*#e6e6e6*//*;
-   border-radius: 10px;
-}
 
 .title{
    display: flex;

@@ -1,0 +1,10 @@
+[Thu May 02 15:09:32.447271 2019] [authz_core:error] [pid 15322] [client 88.161.78.70:54814] AH01630: client denied by server configuration: /opt/stafe
+[Thu May 02 15:09:32.630508 2019] [authz_core:error] [pid 15322] [client 88.161.78.70:54814] AH01630: client denied by server configuration: /opt/stafe
+[Thu May 02 15:09:44.123734 2019] [authz_core:error] [pid 15324] [client 88.161.78.70:35805] AH01630: client denied by server configuration: /opt/stafe
+[Thu May 02 15:09:44.294530 2019] [authz_core:error] [pid 15324] [client 88.161.78.70:35805] AH01630: client denied by server configuration: /opt/stafe
+[Thu May 02 15:09:53.853382 2019] [authz_core:error] [pid 15325] [client 88.161.78.70:17390] AH01630: client denied by server configuration: /opt/stafe
+[Thu May 02 15:09:54.637831 2019] [authz_core:error] [pid 15325] [client 88.161.78.70:17390] AH01630: client denied by server configuration: /opt/stafe
+[Thu May 02 15:09:54.956512 2019] [authz_core:error] [pid 15325] [client 88.161.78.70:17390] AH01630: client denied by server configuration: /opt/stafe
+[Thu May 02 15:10:22.894205 2019] [authz_core:error] [pid 15322] [client 88.161.78.70:13222] AH01630: client denied by server configuration: /opt/stafe
+[Thu May 02 15:13:24.461313 2019] [:error] [pid 15426] [client 88.161.78.70:6327] PHP Fatal error:  Uncaught Error: Call to undefined function ldap_connect() in /opt/stage/functions.php:14\nStack trace:\n#0 /opt/stage/connexion.php(4): connection()\n#1 {main}\n  thrown in /opt/stage/functions.php on line 14, referer: http://stage.com/
+[Fri May 03 08:54:56.145277 2019] [:error] [pid 18801] [client 88.161.78.70:33901] script '/opt/stage/projet.php' not found or unable to stat

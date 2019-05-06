@@ -8,13 +8,22 @@
       <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
    </head>
    <body>
+<?php
+      if (!empty($_GET['cn'])) {
+         echo "Bonjour <strong>" . $_GET['cn'] . "</strong>";
+      }
+
+      ?>
       <div class="test popup-close"></div>
       <div class="main-container-projets">
-         <div class="popup-btn1">
-            <div class="container-projet popup-box1">
+         <div class="popup-btn" id="1">
+            <div class="container-projet popup-box popup-box1 transform-out">
                <div class="sub-content">
                   <div class="title">
                      <h2>Nom du projet</h2>
+                     <div class="cache cache1">
+                        <a href="#">Postuler</a>
+                     </div>
                   </div>
                   <div class="sub-content-projet">
                      <div class="description-projet">
@@ -38,11 +47,14 @@
                </div>
             </div>
          </div>
-         <div class="popup-btn">
-            <div class="container-projet popup-box">
+         <div class="popup-btn" id="0">
+            <div class="container-projet popup-box popup-box0 transform-out">
                <div class="sub-content">
                   <div class="title">
                      <h2>Nom du projet 2</h2>
+                     <div class="cache cache0">
+                        <a href="#">Postuler</a>
+                     </div>
                   </div>
                   <div class="sub-content-projet">
                      <div class="description-projet">
@@ -66,11 +78,14 @@
                </div>
             </div>
          </div>
-         <div class="popup-btn2">
-            <div class="container-projet popup-box2">
+         <div class="popup-btn" id="2">
+            <div class="container-projet popup-box popup-box2 transform-out">
                <div class="sub-content">
                   <div class="title">
                      <h2>Nom du projet 3</h2>
+                     <div class="cache cache2">
+                        <a href="#">Postuler</a>
+                     </div>
                   </div>
                   <div class="sub-content-projet">
                      <div class="description-projet">

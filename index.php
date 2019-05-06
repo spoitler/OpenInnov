@@ -10,9 +10,7 @@
     </head>
     <body>
       <?php
-         if (!empty($_GET['cn'])) {
-            echo "Bonjour <strong>" . $_GET['cn'] . "</strong>";
-         }elseif (isset($_GET['Error'])) {
+         if (isset($_GET['Error'])) {
             if ($_GET['Error'] == 1) {
                echo '<span id="Error">Veuillez rentrer des identifiants valide</span>';
             }
@@ -30,7 +28,7 @@
             </div>
             <div >
               <form action="connexion.php" method="post">
-                <div ><!--margin-->
+                <div >
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input id="username" name="username" type="text" class="mdl-textfield__input" />
                     <label class="mdl-textfield__label" for="username">Identifiant</label>

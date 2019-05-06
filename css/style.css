@@ -165,7 +165,7 @@ li {
 .test{
    z-index: 1;
    width: 100%;
-   height: 100%;
+   height: 100vh;
    display: none;
    position: absolute;
    top: 0px;
@@ -211,26 +211,21 @@ li {
    -webkit-transition: all ease 0.7s;
    transition: all ease 0.7s;
    -webkit-transform: scale(1.5);
-   /* transform: translate(0,0) scale(1.2);
-   position: absolute;
+   transform: translate(0,0) scale(1.2);
+   /*position: absolute;
    top: 25%;
    left: 10%;
    width: 280px; */
 
-
-
-
-
-
-
-
-   transform: translate(0,0) scale(1.3);
-
-
-max-width: 85%;
-
-min-width: 200px;
    }
+
+.sub-container-projet{
+   position: absolute;
+   display: contents;
+   /* top: 50%;
+   left: 50%;
+   transform: translate(-50%,-50%); */
+}
 
 /* .transform-out{
    -webkit-transition: all ease 0.5s;
@@ -318,10 +313,10 @@ min-width: 200px;
       -webkit-transition: all ease 0.7s;
       transition: all ease 0.7s;
       -webkit-transform: scale(1.5);
-      transform: translate(0,0) scale(1.5); //modifier top, left et width par rapport a l'ecran
+      transform: translate(0,0) scale(1.5); /*modifier top, left et width par rapport a l'ecran*/
       position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 450px;
+      top: 30%;
+      left: 24%;
+      width: 50%;
    }
 }

@@ -48,7 +48,14 @@ li {
    box-shadow: 0 5px 10px #0002;
 }
 #Error{
-   color: red;
+   color: #fff;
+   background-color: #ff2a2a;
+   height: 40px;
+   width: 100%;
+   display: block;
+   text-align: center;
+   font-size: 16px;
+   line-height: 2.5em;
 }
 
 .main-container-projets{

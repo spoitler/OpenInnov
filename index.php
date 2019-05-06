@@ -54,6 +54,8 @@
             </div>
          </div>
       </div>
+      <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
       <script src='https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js'></script>
+      <script  src="js/index.js"></script>
     </body>
 </html>

@@ -211,11 +211,11 @@ li {
    -webkit-transition: all ease 0.7s;
    transition: all ease 0.7s;
    -webkit-transform: scale(1.5);
-   transform: translate(0,0) scale(1.5);
+   transform: translate(0,0) scale(1.2);
    position: absolute;
-   top: 50%;
-   left: 50%;
-   width: 450px;
+   top: 25%;
+   left: 10%;
+   width: 280px;
    }
 
 /* .transform-out{
@@ -304,7 +304,7 @@ li {
       -webkit-transition: all ease 0.7s;
       transition: all ease 0.7s;
       -webkit-transform: scale(1.5);
-      transform: translate(0,0) scale(1.5);
+      transform: translate(0,0) scale(1.5); //modifier top, left et width par rapport a l'ecran
       position: absolute;
       top: 50%;
       left: 50%;

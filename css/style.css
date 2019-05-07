@@ -31,7 +31,6 @@ li {
   background: linear-gradient(33deg, var(--gradient-start), var(--gradient-end));
 }
 
-
 .end-color:before { background-color: var(--gradient-start); }
 
 .start-color:before { background-color: var(--gradient-end); }
@@ -47,6 +46,7 @@ li {
    border-radius: 10px;
    box-shadow: 0 5px 10px #0002;
 }
+
 #Error{
    color: #fff;
    background-color: #e62121;
@@ -218,15 +218,15 @@ li {
 
 .popup-box {
    z-index: 0;
-  transform: scale(1);
-  position: relative;
-  top: auto;
-  left:  auto;
+   transform: scale(1);
+   position: relative;
+   top: auto;
+   left:  auto;
 }
 
 .transform-in, .transform-out {
-  -webkit-transition: all ease 0.5s;
-  transition: all ease 0.5s;
+   -webkit-transition: all ease 0.5s;
+   transition: all ease 0.5s;
 }
 
 .transform-in{
@@ -249,81 +249,51 @@ li {
    display: contents;
 }
 
-
-
-
-
 @media (min-width: 600px){
 
-   .popup-btn1, .popup-btn, .popup-btn2{
-      display: inline-block;
-      width: 85%;
-      max-width: 450px;
-   }
+   /*********************\
+            MENU
+   \*********************/
 
-   .btn {
-     margin-top: 30px;
-     padding: 2.2% 5.5%;
-     display: inline-block;
-     -webkit-transition: all linear 0.15s;
-     transition: all linear 0.15s;
-     border-radius: 3px;
-     background: #fff;
-     font-size: 22px;
-     font-weight: bold;
-     text-decoration: none;
-     text-transform: uppercase;
-     color: #333;
-   }
-   .btn:hover {
-     opacity: 0.75;
-   }
-
-   .test{
+   .container-menu{
       z-index: 1;
-      width: 100%;
-      height: 100%;
-      display: none;
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      content: '';
-      background: rgba(0, 0, 0, 0.85);
+     position: fixed;
+     top: 0;
+     left:50%;
+     transform: translate(-50%);
+     width: 100%;
+     height: 50px;
+     background-color: #fff;
+     box-shadow: 0 3px 5px rgba(000,000,002,0.1);
    }
 
-   .cache{
-      display: none;
-
+   .container-icones{
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%,-50%);
+     display: flex;
+     width: auto;
    }
 
-   .cache p{
-      color: green;
+   .icones{
+     margin: 0 30px 0 30px;
    }
 
-   .popup-box {
-      z-index: 0;
-     transform: scale(1);
-     position: relative;
-     top: auto;
-     left:  auto;
+   .icones img{
+      height: 30px;
    }
 
-   .popup-box1 {
-     transform: scale(1);
-     position: relative;
-   }
-
-   .transform-in, .transform-out {
-     -webkit-transition: all ease 0.5s;
-     transition: all ease 0.5s;
-   }
+   /*********************\
+         PAGE PROJETS
+   \*********************/
 
    .transform-in{
       -webkit-transition: all ease 0.7s;
       transition: all ease 0.7s;
       -webkit-transform: scale(1.5);
       transform: translate(0,0) scale(1.5); /*modifier top, left et width par rapport a l'ecran*/
-      position: absolute;
+      position: fixed;
       top: 30%;
       left: 24%;
       width: 50%;

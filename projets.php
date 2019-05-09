@@ -85,12 +85,25 @@
                            euismod. In ac interdum ligula....
                         </p>
                      </div>
-                     <div class="chef-Projet">
+                     <div class="chef-Projet line-height">
                         <h3>Chef de projet :</h3>
                         <p>&nbsp;Romain BONNES - I5</p>
-                        <div class="container-Membres">
-                           <p><img src="img/membres.png" class="icone-membres" alt="membres" title="icone membres"></p>
-                           <p class="nombres-membres">5/7</p>
+                     </div>
+                     <div class="container-icones-membres">
+                        <p><img src="img/membres.png" class="icone-membres" alt="membres" title="icone membres"></p>
+                        <p class="nombres-membres">5/7</p>
+                     </div>
+                     <div class="createur cache cache0 info-projet line-height">
+                        <h3>Créateur :</h3>
+                        <p>&nbsp;Romain BONNES - I5</p>
+                     </div>
+                     <div class="membres cache cache0 info-projet line-height">
+                        <h3>Membes :</h3><br>
+                        <div class="container-membres">
+                           <p>&nbsp;Romain BONNES - I5</p>
+                           <p>&nbsp;Romain BONNES - I5</p>
+                           <p>&nbsp;Romain BONNES - I5</p>
+                           <p>&nbsp;Romain BONNES - I5</p>
                         </div>
                      </div>
                   </div>
@@ -116,12 +129,25 @@
                            euismod. In ac interdum ligula....
                         </p>
                      </div>
-                     <div class="chef-Projet">
+                     <div class="chef-Projet line-height">
                         <h3>Chef de projet :</h3>
                         <p>&nbsp;Romain BONNES - I5</p>
-                        <div class="container-Membres">
-                           <p><img src="img/membres.png" class="icone-membres" alt="membres" title="icone membres"></p>
-                           <p class="nombres-membres">5/7</p>
+                     </div>
+                     <div class="container-icones-membres">
+                        <p><img src="img/membres.png" class="icone-membres" alt="membres" title="icone membres"></p>
+                        <p class="nombres-membres">5/7</p>
+                     </div>
+                     <div class="createur cache cache3 info-projet line-height">
+                        <h3>Créateur :</h3>
+                        <p>&nbsp;Romain BONNES - I5</p>
+                     </div>
+                     <div class="membres cache cache3 info-projet line-height">
+                        <h3>Membes :</h3><br>
+                        <div class="container-membres">
+                           <p>&nbsp;Romain BONNES - I5</p>
+                           <p>&nbsp;Romain BONNES - I5</p>
+                           <p>&nbsp;Romain BONNES - I5</p>
+                           <p>&nbsp;Romain BONNES - I5</p>
                         </div>
                      </div>
                   </div>
@@ -147,12 +173,69 @@
                            euismod. In ac interdum ligula....
                         </p>
                      </div>
-                     <div class="chef-Projet">
+                     <div class="chef-Projet line-height">
                         <h3>Chef de projet :</h3>
                         <p>&nbsp;Romain BONNES - I5</p>
-                        <div class="container-Membres">
-                           <p><img src="img/membres.png" class="icone-membres" alt="membres" title="icone membres"></p>
-                           <p class="nombres-membres">5/7</p>
+                     </div>
+                     <div class="container-icones-membres">
+                        <p><img src="img/membres.png" class="icone-membres" alt="membres" title="icone membres"></p>
+                        <p class="nombres-membres">5/7</p>
+                     </div>
+                     <div class="createur cache cache2 info-projet line-height">
+                        <h3>Créateur :</h3>
+                        <p>&nbsp;Romain BONNES - I5</p>
+                     </div>
+                     <div class="membres cache cache2 info-projet line-height">
+                        <h3>Membes :</h3><br>
+                        <div class="container-membres">
+                           <p>&nbsp;Romain BONNES - I5</p>
+                           <p>&nbsp;Romain BONNES - I5</p>
+                           <p>&nbsp;Romain BONNES - I5</p>
+                           <p>&nbsp;Romain BONNES - I5</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="popup-btn 5" id="5">
+            <div class="container-projet popup-box popup-box5 transform-out">
+               <div class="sub-content">
+                  <div class="title">
+                     <h2>Nom du projet 5</h2>
+                     <div class="cache cache5">
+                        <a href="#">Postuler</a>
+                     </div>
+                  </div>
+                  <div class="sub-content-projet">
+                     <div class="description-projet">
+                        <h3>Description :</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                           elit. Sed turpis ligula, aliquam vitae commodo ut,
+                           egestas at nisi. Vivamus vulputate efficitur varius.
+                           Donec at egestas lectus. Aliquam fringilla pretium
+                           euismod. In ac interdum ligula....
+                        </p>
+                     </div>
+                     <div class="chef-Projet line-height">
+                        <h3>Chef de projet :</h3>
+                        <p>&nbsp;Romain BONNES - I5</p>
+                     </div>
+                     <div class="container-icones-membres">
+                        <p><img src="img/membres.png" class="icone-membres" alt="membres" title="icone membres"></p>
+                        <p class="nombres-membres">5/7</p>
+                     </div>
+                     <div class="createur cache cache5 info-projet line-height">
+                        <h3>Créateur :</h3>
+                        <p>&nbsp;Romain BONNES - I5</p>
+                     </div>
+                     <div class="membres cache cache5 info-projet line-height">
+                        <h3>Membes :</h3><br>
+                        <div class="container-membres">
+                           <p>&nbsp;Romain BONNES - I5</p>
+                           <p>&nbsp;Romain BONNES - I5</p>
+                           <p>&nbsp;Romain BONNES - I5</p>
+                           <p>&nbsp;Romain BONNES - I5</p>
                         </div>
                      </div>
                   </div>

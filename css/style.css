@@ -115,11 +115,25 @@ li {
 }
 
 .icones{
-  margin: 0 30px 0 30px;
+   margin: 0 20px 0 20px;
+}
+
+.icones a{
+   text-align: center;
+}
+
+.icones p{
+   height: 50px;
+   width: 100px;
+   line-height: 3em;
 }
 
 .icones img{
    height: 25px;
+}
+
+.menu-texte-icones{
+   display: none;
 }
 
 /*********************\
@@ -132,6 +146,7 @@ li {
    height: auto;
    width: 100%;
    text-align: center;
+   margin-bottom: 70px;
 }
 
 .main-container-projets h3{
@@ -228,17 +243,17 @@ li {
 
 .icone-membres{
    height: auto;
-   width: 17px;
+   width: 16px;
 }
 
 .container-icones-membres .nombres-membres{
-   line-height: 1.5em;
+   line-height: 1em;
 }
 
 .popup-btn{
    display: inline-block;
    width: 85%;
-   max-width: 450px;
+   max-width: 360px;
 }
 
 .overlay{
@@ -279,7 +294,7 @@ li {
 .transform-in{
    -webkit-transition: all ease 0.7s;
    transition: all ease 0.7s;
-   -webkit-transform: scale(1.5);
+   -webkit-transform: scale(1.2);
    transform: translate(0,0) scale(1.2);
    position: fixed;
    top: 22%;
@@ -314,7 +329,7 @@ textarea{
 /*form styles*/
 .msform {
     position: relative;
-    top: 30px;
+    top: 0px;
     font-family: arial, , sans-serif,verdana;
     width: 100%;
     text-align: center;
@@ -349,7 +364,7 @@ textarea{
 .wrapper{
    display: flex;
    position: relative;
-   top: 50px;
+   top: 25px;
    margin-bottom: 50px;
 }
 
@@ -491,7 +506,28 @@ fieldset img{
 }
 
 #creation{
+   position: relative;
+   height: 36px;
+   min-width: 64px;
+   color: #fff;
+   background-color: rgb(63,81,181);
    margin-bottom: 80px;
+   box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+   border: none;
+   border-radius: 2px;
+   padding: 0 8px;
+   font-family: "Roboto","Helvetica","Arial",sans-serif;
+   display: inline-block;
+   font-size: 14px;
+   font-weight: 500;
+   text-transform: uppercase;
+   letter-spacing: 0;
+   outline: none;
+   cursor: pointer;
+   text-decoration: none;
+   text-align: center;
+   line-height: 36px;
+   vertical-align: middle;
 }
 
 /****************************\
@@ -518,47 +554,62 @@ fieldset img{
 }
 
 .container-candidature{
-   position: relative;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%,30%);
-   width: 92%;
+   position: absolute;
+   width: 100%;
+   text-align: center;
+   top: 27%;
+   font-size: 14px;
+}
+
+.container-display{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
 }
 
 .box-candidature{
    height: auto;
-   width: 100%;
    background-color: #fff;
-   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.06);
+   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.09);
    border-radius: 10px;
-   margin-bottom: 50px;
-}
-
-.candidature1{
-   text-align: center;
-   margin: 5px 0 15px 0;
+   margin: 0 10px 30px;
+   max-width: 700px;
+   padding: 0 10px 20px 10px;
 }
 
 .candidature1 h3{
    font-size: 15px;
    font-weight: bold;
    margin: 0;
+   font-family: "Roboto","Helvetica","Arial",sans-serif;
+   line-height: 40px
 }
 
 .trait{
-   position: relative;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%,-50%);
-   height: 1px;
-   width: 90%;
+   height: 0.7px;
    background: grey;
-   margin-bottom: 10px;
+   margin: 0 20px 10px 20px;
 }
 
 .candidature1 p{
    margin: 0 10px 0 10px;
-   font-size: 12px;
+   font-size: 13px;
+   line-height: 20px;
+}
+
+.title-candidature{
+   position: relative;
+   display: flex;
+   justify-content: center;
+   width: 100%;
+}
+
+.title-candidature a{
+   color :#000;
+   position: absolute;
+   right: 20px;
+   line-height: 3em;
+   font-size: 14px;
 }
 
 @media (min-width: 320px) and (max-width: 350px) {
@@ -586,51 +637,38 @@ fieldset img{
    \*********************/
 
    .container-menu{
-      z-index: 1;
-      position: fixed;
       top: 0;
-      left:50%;
-      transform: translate(-50%);
-      width: 100%;
-      height: 50px;
-      background-color: #fff;
       box-shadow: 0 3px 5px rgba(000,000,002,0.1);
    }
 
-   .container-icones{
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%,-50%);
-     display: flex;
-     width: auto;
-   }
-
    .icones{
-     margin: 0 30px 0 30px;
+      margin: 0 10px 0 10px;
    }
 
-   .icones img{
-      height: 30px;
+   .icones p{
+      width: 200px;
+      min-width: 150px;
    }
+
+   .menu-texte-icones{
+      display: inline-block;
+      margin-left: 15px;
+   }
+
 
    /*********************\
          PAGE PROJETS
    \*********************/
 
    .transform-in{
-      -webkit-transition: all ease 0.7s;
-      transition: all ease 0.7s;
       -webkit-transform: scale(1.5);
       transform: translate(0,0) scale(1.5); /*modifier top, left et width par rapport a l'ecran*/
-      position: fixed;
       top: 30%;
       left: 24%;
       width: 50%;
    }
 
    .container-membres p{
-      height: 15px;
       width: 30%;
    }
 
@@ -652,4 +690,11 @@ fieldset img{
       height: 6em;
    }
 
+}
+
+
+@media (min-width: 900px){
+   .popup-btn{
+      max-width: 450px;
+   }
 }

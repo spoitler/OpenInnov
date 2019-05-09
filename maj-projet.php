@@ -6,7 +6,6 @@
       <title></title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
-      <link rel='stylesheet' href='https://storage.googleapis.com/code.getmdl.io/1.0.4/material.indigo-pink.min.css'>
    </head>
    <body>
       <div class="header">
@@ -25,23 +24,33 @@
                <textarea id="descriptionC" name="descriptionC" placeholder="Description courte du projet (330 caractères maximum)" value="" onkeyup="javascript:MaxLengthTextarea(this, 350);" required></textarea>
                <textarea id="descriptionL" name="descriptionL" placeholder="Description longue du projet (4000 caractères maximum)" value="" onkeyup="javascript:MaxLengthTextarea(this, 4000);" required></textarea>
                <div class="wrapper">
-                  <p><input type="checkbox" name="cb" id="cb1" checked><label for="cb1">Créateur + Chef de projet</label></p>
+                  <p><input type="checkbox" name="cb" id="cb1" checked><label id="labelcb" for="cb1">Créateur + Chef de projet</label></p>
                   <div class="popupinfo" onclick="myFunction()">
                      <p><img src="img/information.png" alt="information"></p>
                      <p class="popuptexteinfo" id="myPopup" >Si la case est coché, le projet vous appartient. Sinon c'est une idée sans porteur de projet</p>
                   </div>
                </div>
-
             </fieldset>
-            <button id="creation" type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">
+            <button  id="creation" type="submit"  type="button" name="button">
                Mettre à jour le projet
             </button>
          </form>
       </div>
       <div class="container-candidature">
-         <div class="box-candidature">
-            <div class="candidature1">
-               <h3>Romain BONNES - B1</h3>
+         <div class="container-display">
+            <div class="box-candidature candidature1">
+               <div class="title-candidature">
+                  <h3>Romain BONNES - B1</h3>
+                  <a href="#">Accepter</a>
+               </div>
+               <div class="trait"></div>
+               <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi arcu nulla, volutpat quis laoreet ac, imperdiet at orci. Nullam ultricies molestie tellus, quis scelerisque diam elementum molestie. Duis posuere tempus nulla at molestie. Aliquam dapibus nisl vel turpis ultrices ullamcorper. Phasellus non porta enim. Aenean laoreet mauris eget ipsum ultricies, a pretium odio pulvinar. Ut sodales felis at ultricies blandit. Ut ut ex enim. Vestibulum quis fringilla sapien, pharetra sollicitudin erat. Morbi vehicula diam nec semper fermentum. Proin quis elit eu lectus iaculis ultrices. </p>
+            </div>
+            <div class="box-candidature candidature1">
+               <div class="title-candidature">
+                  <h3>Romain BONNES - B1</h3>
+                  <a href="#">Accepter</a>
+               </div>
                <div class="trait"></div>
                <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi arcu nulla, volutpat quis laoreet ac, imperdiet at orci. Nullam ultricies molestie tellus, quis scelerisque diam elementum molestie. Duis posuere tempus nulla at molestie. Aliquam dapibus nisl vel turpis ultrices ullamcorper. Phasellus non porta enim. Aenean laoreet mauris eget ipsum ultricies, a pretium odio pulvinar. Ut sodales felis at ultricies blandit. Ut ut ex enim. Vestibulum quis fringilla sapien, pharetra sollicitudin erat. Morbi vehicula diam nec semper fermentum. Proin quis elit eu lectus iaculis ultrices. </p>
             </div>

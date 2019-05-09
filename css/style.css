@@ -64,10 +64,13 @@ li {
 
 .header{
    height: 50px;
-   width: 100%;
+   width: 90%;
    text-align: center;
    text-transform: uppercase;
    margin-bottom: 10px;
+   position: relative;
+   left: 50%;
+   transform: translate(-50%);
 }
 
 .header h1{
@@ -125,7 +128,7 @@ li {
 
 .main-container-projets{
    position: relative;
-   top: 100px;
+   top: 40px;
    height: auto;
    width: 100%;
    text-align: center;
@@ -291,7 +294,7 @@ textarea{
 /*form styles*/
 .msform {
     position: relative;
-    top: 100px;
+    top: 30px;
     font-family: arial, , sans-serif,verdana;
     width: 100%;
     text-align: center;
@@ -317,6 +320,10 @@ textarea{
     color: #2C3E50;
     font-size: 13px;
     font-family: arial, sans-serif;
+}
+
+.form-maj{
+   top: 60px
 }
 
 .wrapper{
@@ -472,10 +479,9 @@ fieldset img{
 \****************************/
 
 .menu-maj{
-   position: absolute;
-   top: 20%;
+   position: relative;
    left: 50%;
-   transform: translate(-50%,0);
+   transform: translate(-50%,250%);
    height: auto;
    width: 100%;
    text-align: center;
@@ -491,10 +497,14 @@ fieldset img{
    border-bottom: solid 2px  rgb(63,81,181);
 }
 
-.box-candidature{
+.container-candidature{
    position: relative;
+   top: 50%;
    left: 50%;
-   transform: translate(-50%, 45%);
+   transform: translate(-50%,30%);
+}
+
+.box-candidature{
    height: auto;
    width: 95%;
    background-color: #fff;

@@ -18,7 +18,7 @@
          <a href="#" class="candidature" onkeyup="javascript:menu();">Candidature</a>
       </div>
       <div class="container-modification">
-         <form action="creation-projet.php" method="post" class="msform form_inscription">
+         <form action="creation-projet.php" method="post" class="msform form-maj">
             <fieldset>
                <h2 class="fs-title">Modification Projet</h2>
                <input type="text" name="titre" placeholder="Nom du projet" value="" required/>

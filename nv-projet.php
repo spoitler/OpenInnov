@@ -13,7 +13,7 @@
          <h1>création projet</h1>
       </div>
       <?php include ("menu.php"); ?>
-      <form action="creation-projet.php" method="post" class="msform form_inscription">
+      <form action="creation-projet.php" method="post" class="msform">
          <fieldset>
             <h2 class="fs-title">Nouveau Projet</h2>
             <input type="text" name="titre" placeholder="Nom du projet" required/>

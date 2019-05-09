@@ -39,14 +39,29 @@
                            euismod. In ac interdum ligula....
                         </p>
                      </div>
-                     <div class="chef-Projet">
+                     <div class="chef-Projet line-height">
                         <h3>Chef de projet :</h3>
                         <p>&nbsp;Romain BONNES - I5</p>
-                        <div class="container-Membres">
-                           <p><img src="img/membres.png" class="icone-membres" alt="membres" title="icone membres"></p>
-                           <p class="nombres-membres">5/7</p>
-                        </div>
                      </div>
+                     <div class="container-icones-membres">
+                        <p><img src="img/membres.png" class="icone-membres" alt="membres" title="icone membres"></p>
+                        <p class="nombres-membres">5/7</p>
+                     </div>
+                     <div class="createur cache cache1 info-projet line-height">
+                        <h3>Créateur :</h3>
+                        <p>&nbsp;Romain BONNES - I5</p>
+                     </div>
+                     <div class="membres cache cache1 info-projet line-height">
+                        <h3>Membes :</h3><br>
+                        <div class="container-membres">
+                           <p>&nbsp;Romain BONNES - I5</p>
+                           <p>&nbsp;Romain BONNES - I5</p>
+                           <p>&nbsp;Romain BONNES - I5</p>
+                           <p>&nbsp;Romain BONNES - I5</p>
+                        </div>
+
+                     </div>
+
                   </div>
                </div>
             </div>

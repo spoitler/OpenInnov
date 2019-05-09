@@ -20,7 +20,7 @@
             <textarea id="descriptionC" name="descriptionC" placeholder="Description courte du projet (330 caractères maximum)" onkeyup="javascript:MaxLengthTextarea(this, 350);" required></textarea>
             <textarea id="descriptionL" name="descriptionL" placeholder="Description longue du projet (4000 caractères maximum)" rows="10" onkeyup="javascript:MaxLengthTextarea(this, 4000);" required></textarea>
             <div class="wrapper">
-               <p><input type="checkbox" name="cb" id="cb1" checked><label for="cb1">Créateur + Chef de projet</label></p>
+               <p><input type="checkbox" name="cb" id="cb1" checked><label id="labelcb" for="cb1">Créateur + Chef de projet</label></p>
                <div class="popupinfo" onclick="myFunction()">
                   <p><img src="img/information.png" alt="information"></p>
                   <p class="popuptexteinfo" id="myPopup" >Si la case est coché, le projet vous appartient. Sinon c'est une idée sans porteur de projet</p>

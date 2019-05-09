@@ -178,28 +178,52 @@ li {
    line-height: 1.4em;
 }
 
+.info-projet{
+   font-size: 11px;
+   margin: 20px 0 20px 0;
+   text-align: left;
+}
+
+.info-projet h3{
+   float: left;
+}
+
 .chef-Projet{
    display: flex;
    vertical-align: middle;
    font-size: 11px;
-   margin-top: 20px;
    margin: 30px 0 20px 0;
-   position: relative;
 }
 
 .chef-Projet p{
    margin: 0;
 }
 
-.chef-Projet p:nth-child(2){
+.line-height{
    line-height: 1.5em;
 }
 
-.container-Membres{
+.membres{
+   margin: 0px 0px 45px;
+}
+
+.container-membres{
+   display: flex;
+   flex-wrap: wrap;
+   text-align: center;
+}
+
+.container-membres p{
+   height: 15px;
+   width: 50%;
+}
+
+.container-icones-membres{
    display: flex;
    float: right;
    position: absolute;
    right: 10px;
+   bottom: -5px;
 }
 
 .icone-membres{
@@ -207,7 +231,7 @@ li {
    width: 17px;
 }
 
-.container-Membres .nombres-membres{
+.container-icones-membres .nombres-membres{
    line-height: 1.5em;
 }
 
@@ -239,10 +263,6 @@ li {
    top: 0;
 }
 
-.cache p{
-   color: green;
-}
-
 .popup-box {
    z-index: 0;
    transform: scale(1);
@@ -262,7 +282,7 @@ li {
    -webkit-transform: scale(1.5);
    transform: translate(0,0) scale(1.2);
    position: fixed;
-   top: 35%;
+   top: 22%;
    left: 10%;
    width: 78%;
 }
@@ -338,13 +358,13 @@ textarea{
 }
 
 /* Basic styles */
-input[type="checkbox"]{
+#cb1{
   position: absolute;
   opacity: 0;
   z-index: -1;
   width: auto;
 }
-label {
+#labelcb {
   color: #000;
   position: relative;
   display: inline-block;
@@ -354,8 +374,8 @@ label {
   cursor: pointer;
 }
 /* Transition */
-label::before,
-label::after {
+#labelcb::before,
+#labelcb::after {
   position: absolute;
   top: 0;
   left: 0;
@@ -366,13 +386,13 @@ label::after {
   -o-transition: .25s all ease;
   transition: .25s all ease;
 }
-label::before {
+#labelcb::before {
   content: " ";
   border: 2px solid #bdc3c7;
   border-radius: 20%;
 }
 /* Checkbox */
-input[type="checkbox"] + label::after {
+#cb1 + #labelcb::after {
   content: "\2714";
   color: #2c3e50;
   line-height: 1.6;
@@ -384,11 +404,11 @@ input[type="checkbox"] + label::after {
   transform: scale(0);
 }
 /* :checked */
-input[type="checkbox"]:checked + label::before {
+#cb1:checked + #labelcb::before {
   background: #fff;
   border-color: #2c3e50;
 }
-input[type="checkbox"]:checked + label::after{
+#cb1:checked + #labelcb::after{
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   -o-transform: scale(1);
@@ -502,11 +522,12 @@ fieldset img{
    top: 50%;
    left: 50%;
    transform: translate(-50%,30%);
+   width: 92%;
 }
 
 .box-candidature{
    height: auto;
-   width: 95%;
+   width: 100%;
    background-color: #fff;
    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.06);
    border-radius: 10px;
@@ -538,6 +559,24 @@ fieldset img{
 .candidature1 p{
    margin: 0 10px 0 10px;
    font-size: 12px;
+}
+
+@media (min-width: 320px) and (max-width: 350px) {
+
+   /*********************\
+         PAGE PROJETS
+   \*********************/
+
+   .transform-in{
+      -webkit-transition: all ease 0.7s;
+      transition: all ease 0.7s;
+      -webkit-transform: scale(1.5);
+      transform: translate(0,0) scale(1.2);
+      position: fixed;
+      top: 12%;
+      left: 10%;
+      width: 78%;
+   }
 }
 
 @media (min-width: 600px){
@@ -588,6 +627,11 @@ fieldset img{
       top: 30%;
       left: 24%;
       width: 50%;
+   }
+
+   .container-membres p{
+      height: 15px;
+      width: 30%;
    }
 
    /************************\

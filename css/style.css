@@ -249,6 +249,212 @@ li {
    display: contents;
 }
 
+/************************\
+      PAGE NEW PROJET
+\************************/
+
+textarea{
+   resize: none;
+}
+
+.fs-title {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 30px;
+}
+
+/*form styles*/
+.msform {
+    position: relative;
+    top: 150px;
+    font-family: arial, , sans-serif,verdana;
+    width: 100%;
+    text-align: center;
+}
+
+.msform fieldset {
+    /*stacking fieldsets above each other*/
+    position: relative;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 10% 20px 10%;
+    border: 0 none;
+}
+
+/*inputs*/
+.msform input, .msform textarea {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #2C3E50;
+    font-size: 13px;
+    font-family: arial, sans-serif;
+}
+
+/*buttons*/
+.msform .action-button {
+    width: 120px;
+    height: 40px;
+    background: rgb(9, 81, 238);
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 15px 5px;
+}
+
+.msform .action-button:hover, .msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #0951ee;
+}
+
+.wrapper{
+   display: flex;
+   position: relative;
+   top: 50px;
+   margin-bottom: 50px;
+}
+
+/* Basic styles */
+input[type="checkbox"]{
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+  width: auto;
+}
+label {
+  color: #000;
+  position: relative;
+  display: inline-block;
+  padding: 0 0 0 2.5em;
+  height: 1.5em;
+  line-height: 1.6;
+  cursor: pointer;
+}
+/* Transition */
+label::before,
+label::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}
+label::before {
+  content: " ";
+  border: 2px solid #bdc3c7;
+  border-radius: 20%;
+}
+/* Checkbox */
+input[type="checkbox"] + label::after {
+  content: "\2714";
+  color: #2c3e50;
+  line-height: 1.6;
+  text-align: center;
+  margin: 1px;
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+}
+/* :checked */
+input[type="checkbox"]:checked + label::before {
+  background: #fff;
+  border-color: #2c3e50;
+}
+input[type="checkbox"]:checked + label::after{
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+
+fieldset img{
+   height: 17px;
+   width: 17px;
+   position: absolute;
+   top: 10px;
+   margin-left: 10px;
+}
+
+/* Popup container - can be anything you want */
+.popupinfo {
+   display: flex;
+   position: static;
+   cursor: pointer;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+
+/* The actual popup */
+.popupinfo .popuptexteinfo {
+
+  visibility: hidden;
+  width: 270px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 70%;
+  left: -10%;
+}
+
+/* Popup arrow */
+.popupinfo .popuptexteinfo::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popupinfo .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+
+#descriptionC{
+   height: 14em;
+}
+
+#descriptionL{
+   height: 20em;
+}
+
+#submit_inscription{
+   padding-bottom: 50px;
+}
+
 @media (min-width: 600px){
 
    /*********************\
@@ -298,4 +504,23 @@ li {
       left: 24%;
       width: 50%;
    }
+
+   /************************\
+         PAGE NEW PROJET
+   \************************/
+
+   /* Popup container - can be anything you want */
+   .popupinfo {
+      position: relative;
+   }
+
+   .popupinfo .popuptexteinfo {
+      bottom: 70%;
+      margin-left: -116px;
+   }
+
+   #descriptionC{
+      height: 6em;
+   }
+
 }

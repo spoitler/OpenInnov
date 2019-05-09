@@ -115,7 +115,7 @@ li {
 }
 
 .icones{
-   margin: 0 20px 0 20px;
+   margin: 0;
 }
 
 .icones a{
@@ -329,7 +329,7 @@ textarea{
 /*form styles*/
 .msform {
     position: relative;
-    top: 0px;
+    top: 20px;
     font-family: arial, , sans-serif,verdana;
     width: 100%;
     text-align: center;
@@ -536,8 +536,7 @@ fieldset img{
 
 .menu-maj{
    position: relative;
-   left: 50%;
-   transform: translate(-50%,250%);
+   top: 50px;
    height: auto;
    width: 100%;
    text-align: center;
@@ -632,6 +631,10 @@ fieldset img{
 
 @media (min-width: 600px){
 
+   .header{
+      display: none;
+   }
+
    /*********************\
             MENU
    \*********************/
@@ -660,6 +663,10 @@ fieldset img{
          PAGE PROJETS
    \*********************/
 
+   .main-container-projets{
+      top: 80px;
+   }
+
    .transform-in{
       -webkit-transform: scale(1.5);
       transform: translate(0,0) scale(1.5); /*modifier top, left et width par rapport a l'ecran*/
@@ -676,6 +683,10 @@ fieldset img{
          PAGE NEW PROJET
    \************************/
 
+   .msform{
+      top: 60px;
+   }
+
    /* Popup container - can be anything you want */
    .popupinfo {
       position: relative;
@@ -688,6 +699,18 @@ fieldset img{
 
    #descriptionC{
       height: 6em;
+   }
+
+   /***************************\
+         PAGE MODIF PROJET
+   \***************************/
+
+   .menu-maj{
+      top: 80px;
+   }
+
+   .form-maj{
+      top: 100px;
    }
 
 }

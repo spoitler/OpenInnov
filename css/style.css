@@ -5,7 +5,7 @@ body{
 }
 
 a{
-   color: #000;
+   color: black;
    text-decoration: none;
 }
 
@@ -58,6 +58,25 @@ li {
    line-height: 2.5em;
 }
 
+/****************\
+      HEADER
+\****************/
+
+.header{
+   height: 50px;
+   width: 100%;
+   text-align: center;
+   text-transform: uppercase;
+   margin-bottom: 10px;
+}
+
+.header h1{
+   font-family: arial, sans-serif;
+   font-weight: 700;
+   font-size: 35px;
+   line-height: 1em;
+}
+
 /*********************\
          MENU
 \*********************/
@@ -106,7 +125,7 @@ li {
 
 .main-container-projets{
    position: relative;
-   top: 120px;
+   top: 100px;
    height: auto;
    width: 100%;
    text-align: center;
@@ -272,7 +291,7 @@ textarea{
 /*form styles*/
 .msform {
     position: relative;
-    top: 150px;
+    top: 100px;
     font-family: arial, , sans-serif,verdana;
     width: 100%;
     text-align: center;
@@ -446,6 +465,69 @@ fieldset img{
 
 #creation{
    margin-bottom: 80px;
+}
+
+/****************************\
+      PAGE UPDATE PROJET
+\****************************/
+
+.menu-maj{
+   position: absolute;
+   top: 20%;
+   left: 50%;
+   transform: translate(-50%,0);
+   height: auto;
+   width: 100%;
+   text-align: center;
+}
+
+.menu-maj a{
+   color: #000;
+   margin: 0 20px 0 20px;
+   padding-bottom: 10px;
+}
+
+.menu-maj-current{
+   border-bottom: solid 2px  rgb(63,81,181);
+}
+
+.box-candidature{
+   position: relative;
+   left: 50%;
+   transform: translate(-50%, 45%);
+   height: auto;
+   width: 95%;
+   background-color: #fff;
+   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.06);
+   border-radius: 10px;
+   margin-bottom: 50px;
+}
+
+.candidature1{
+   text-align: center;
+   margin: 5px 0 15px 0;
+}
+
+.candidature1 h3{
+   font-size: 15px;
+   font-weight: bold;
+   margin: 0;
+}
+
+.trait{
+   position: relative;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%,-50%);
+   height: 1px;
+   width: 90%;
+   background: grey;
+   margin-bottom: 10px;
+}
+
+.candidature1 p{
+   margin: 0 10px 0 10px;
+   font-size: 12px;
 }
 
 @media (min-width: 600px){

@@ -8,6 +8,9 @@
       <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
    </head>
    <body>
+      <div class="header">
+         <h1>PROJETS</h1>
+      </div>
 <?php
       if (!empty($_GET['cn'])) {
          echo "Bonjour <strong>" . $_GET['cn'] . "</strong>";

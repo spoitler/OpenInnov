@@ -9,6 +9,9 @@
       <link rel='stylesheet' href='https://storage.googleapis.com/code.getmdl.io/1.0.4/material.indigo-pink.min.css'>
    </head>
    <body>
+      <div class="header">
+         <h1>création projet</h1>
+      </div>
       <?php include ("menu.php"); ?>
       <form action="creation-projet.php" method="post" class="msform form_inscription">
          <fieldset>

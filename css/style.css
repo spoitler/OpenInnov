@@ -300,6 +300,8 @@ li {
    top: 22%;
    left: 10%;
    width: 78%;
+   height: 380px;
+   overflow: auto;
 }
 
 .transform-out{

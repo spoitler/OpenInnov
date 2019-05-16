@@ -869,18 +869,6 @@
          <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
          <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
       <script  src="js/index.js"></script>
-      <script type="text/javascript">
-         (function($){
-             $(window).on("load",function(){/*mise en place de la scroll barre sur la classe transform-in*/
-                 $(".transform-in").mCustomScrollbar({
-                    theme:"minimal",
-                    scrollInertia: 300
-                 });
-             });
-         })(jQuery);
-      </script>
-      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
    </body>
 </html>

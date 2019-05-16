@@ -1,5 +1,43 @@
 <?php
 
+function getbdd(){
+	$host = "127.0.0.1";
+    $dbName = "stage";
+    $login = "admin";
+    $password = "mydil123456";
+
+    try
+    {
+        $bdd = new PDO('mysql:host='.$host.';dbname='.$dbName.';charset=utf8', $login, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    }
+    catch (Exception $e)
+    {
+        $bdd = null;
+        die('Erreur : ' . $e->getMessage());
+    }
+
+    return $bdd;
+}
+
+function insertProjet(PDO $bdd, $email) {
+    // La requete de base
+    $query = "INSERT INTO projets (titre, createur, chef_projet, description_courte, description_longue) VALUES (:titre,:createur,:chefProjet,:descriptionC,:descriptionL)";
+    // On récupère tout le contenu de la table
+
+    $resultat = $bdd->prepare($query);
+
+    $resultat->bindParam(":titre", $titre);
+    $resultat->bindParam(":createur", $createur);
+    $resultat->bindParam(":chefProjet", $chefProjet);
+    $resultat->bindParam(":descriptionC", $descriptionC);
+    $resultat->bindParam(":descriptionL", $descriptionL);
+
+    $resultat->execute();
+
+    return $resultat->fetch(PDO::FETCH_OBJ);
+
+}
+
 function connection (){
 
       include("conf.php");

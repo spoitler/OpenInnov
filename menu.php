@@ -1,3 +1,4 @@
+<?php session_start();?>
 <div class="container-menu">
    <div class="container-icones">
       <div class="icones">

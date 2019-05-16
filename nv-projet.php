@@ -44,6 +44,6 @@
                alert('Votre texte ne doit pas dépasser '+maxlength+' caractères!');
             }
          }
-</script>
+      </script>
    </body>
 </html>

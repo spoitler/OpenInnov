@@ -15,13 +15,12 @@
       include("functions.php");
       $bdd = getbdd();
       $projets = getProjets($bdd, $_SESSION['user']['id']);
+      // var_dump($projets);
       ?>
       <div class="main-container-projets"><?php
          foreach ($projets as $projet) {
-            if ($projet->id_utilisateur != $projet->createur) {
-               $createur = getUserById($bdd, $projet->createur);
-            }else {
-               $createur = $projet;
+            if (!empty($projet->chef_projet)) {
+               $chef_projet = getUserById($bdd, $projet->chef_projet);
             }
             ?>
                <a class="lien-maj" href="modification-projet.php?id=<?= $projet->id_projet ?>">
@@ -38,15 +37,11 @@
                            </div>
                            <div class="chef-Projet line-height">
                               <h3>Chef de projet :</h3>
-                              <p>&nbsp;<?= $projet->nom_complet ?> - <?= $projet->classe ?></p>
+                              <p>&nbsp;<?= $chef_projet->nom_complet ?> - <?= $chef_projet->classe ?></p>
                            </div>
                            <div class="container-icones-membres">
                               <p><img src="img/membres.png" class="icone-membres" alt="membres" title="icone membres"/></p>
                               <p class="nombres-membres">5/7</p>
-                           </div>
-                           <div class="createur info-projet line-height">
-                              <h3>Créateur :</h3>
-                              <p>&nbsp;<?= $createur->nom_complet  ?> - <?= $createur->classe ?></p>
                            </div>
                         </div>
                      </div>

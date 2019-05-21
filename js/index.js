@@ -13,7 +13,7 @@ $(document).ready(function() {
      $('.cachepopup'+id).css("display","none");
      $('.uncache'+id).css("height","auto");
      $('.membresI'+id).css("position","relative");
-     e.preventDefault();
+     // e.preventDefault();
   });
 
   $('.popup-close').click(function(e) {

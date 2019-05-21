@@ -50,7 +50,7 @@ function getUSerById($bdd, $id){
 }
 
 function getProjets(PDO $bdd, $idUtilisateur){
-	$query = "SELECT * FROM projets,utilisateur WHERE chef_projet=id_utilisateur and id_utilisateur=:id";
+	$query = "SELECT * FROM projets,utilisateur WHERE id_utilisateur=createur and id_utilisateur=:id and chef_projet IN (:id,3)";
 
 	$resultat = $bdd->prepare($query);
 
@@ -59,6 +59,18 @@ function getProjets(PDO $bdd, $idUtilisateur){
 	$resultat->execute();
 
 	return $resultat->fetchAll(PDO::FETCH_OBJ);
+}
+
+function getProjetPostuler(PDO $bdd, $id){
+	$query = "SELECT * FROM projets,utilisateur WHERE id_utilisateur=createur and id_projet=:id";
+
+	$resultat = $bdd->prepare($query);
+
+	$resultat->bindParam(":id", $id);
+
+	$resultat->execute();
+
+	return $resultat->fetch(PDO::FETCH_OBJ);
 }
 
 function getProjet(PDO $bdd, $id){

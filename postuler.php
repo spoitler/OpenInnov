@@ -9,51 +9,43 @@
    </head>
    <body>
       <div class="header">
-         <h1>PROJETS</h1>
+         <h1>POSTULER</h1>
       </div>
-<?php
-      if (!empty($_GET['cn'])) {
-         echo "Bonjour <strong>" . $_GET['cn'] . "</strong>";
-      }
-
+      <?php
       include ("menu.php");
       include ("functions.php");
 
       $bdd = getbdd();
-      $projets = getAllProjets($bdd);
-      // var_dump($projets);
+
+      $projet = getProjetPostuler($bdd, $_GET['id']);
+
+      if (!empty($projet->chef_projet)) {
+         $chef_projet = getUserById($bdd, $projet->chef_projet);
+      }
+
       ?>
-      <div class="overlay popup-close"></div>
       <div class="main-container-projets">
-      <?php
-      foreach ($projets as $projet) {
-         if (!empty($projet->chef_projet)) {
-            $chef_projet = getUserById($bdd, $projet->chef_projet);
-         }?>
-         <div class="popup-btn" id="<?= $projet->id_projet ?>">
-            <div class="container-projet popup-box popup-box<?= $projet->id_projet ?> transform-out">
-               <div class="sub-content">
+         <div class="box-projet" id="<?= $projet->id_projet ?>">
+            <div class="container-projet popup-box popup-box<?= $projet->id_projet ?>">
+               <div class="sub-content-postuler">
                   <div class="title">
                      <h2><?= $projet->titre ?></h2>
-                     <div class="cache cache<?= $projet->id_projet ?>">
-                        <a href="postuler.php?id=<?= $projet->id_projet ?>">Postuler</a>
-                     </div>
                   </div>
                   <div class="sub-content-projet">
-                     <div class="description-projet uncache<?= $projet->id_projet ?>">
+                     <div class="description-projet-postuler uncache<?= $projet->id_projet ?>">
                         <h3>Description :</h3>
-                        <p class="cachepopup<?= $projet->id_projet ?>"><?= $projet->description_courte ?></p>
-                        <p class="cache cache<?= $projet->id_projet ?>"><?= $projet->description_longue ?></p>
+                        <p><?= $projet->description_courte ?></p>
+                        <p><?= $projet->description_longue ?></p>
                      </div>
                      <div class="chef-Projet line-height">
                         <h3>Chef de projet :</h3>
                         <p>&nbsp;<?= $chef_projet->nom_complet ?> - <?= $chef_projet->classe ?></p>
                      </div>
-                     <div class="createur cache cache<?= $projet->id_projet ?> info-projet line-height">
+                     <div class="createur info-projet line-height">
                         <h3>Créateur :</h3>
                         <p>&nbsp;<?= $projet->nom_complet ?> - <?= $projet->classe ?></p>
                      </div>
-                     <div class="membres cache cache<?= $projet->id_projet ?> info-projet line-height">
+                     <div class="membres info-projet line-height">
                         <h3>Membes :</h3><br>
                         <div class="container-membres">
                            <p>&nbsp;Romain BONNES - I5</p>
@@ -70,11 +62,17 @@
                </div>
             </div>
          </div>
-      <?php } ?>
       </div>
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-      <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-      <script  src="js/index.js"></script>
+      <div class="message-projet">
+         <h2>Votre message</h2>
+         <form action="creation-projet.php" method="post" class="msform">
+            <fieldset>
+               <textarea id="descriptionL" name="descriptionL" placeholder="Votre message au chef de projet" rows="10" onkeyup="javascript:MaxLengthTextarea(this, 4000);" required></textarea>
+            </fieldset>
+            <button onclick="return minlength(150);" id="creation" type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">
+               Envoyer
+            </button>
+         </form>
+      </div>
    </body>
 </html>

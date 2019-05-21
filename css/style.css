@@ -150,7 +150,7 @@ li {
 }
 
 .main-container-projets h3{
-   font-size: 12px;
+   font-size: 13px;
    padding-left: 10px;
    margin: 0;
 }
@@ -183,7 +183,7 @@ li {
 .description-projet{
    height: 120px;
    width: 100%;
-   font-size: 11px;
+   font-size: 13px;
    text-align: left;
    margin-top: 20px;
 }
@@ -207,7 +207,7 @@ li {
    display: flex;
    vertical-align: middle;
    font-size: 11px;
-   margin: 10px 0 20px 0;
+   margin: 40px 0 15px 0;
 }
 
 .chef-Projet p{
@@ -622,6 +622,42 @@ fieldset img{
    font-size: 14px;
 }
 
+/***********************\
+      PAGE POSTULER
+\***********************/
+
+.box-projet{
+   display: inline-block;
+   width: 85%;
+}
+
+.description-projet-postuler{
+   font-size: 13px;
+   text-align: left;
+   margin-top: 20px;
+}
+
+.description-projet-postuler p{
+   padding: 0 10px 0 10px;
+   line-height: 1.4em;
+}
+
+.sub-content-postuler p{
+   font-size: 13px;
+}
+
+.message-projet{
+   text-align: center;
+}
+
+.message-projet h2{
+   margin-top: 50px;
+   margin-bottom: 0px;
+}
+
+
+
+
 @media (min-width: 320px) and (max-width: 350px) {
 
    /*********************\
@@ -722,6 +758,15 @@ fieldset img{
 
    .form-maj{
       top: 100px;
+   }
+
+   /***********************\
+         PAGE POSTULER
+   \***********************/
+
+   .message-projet h2{
+      margin-top: 100px;
+      margin-bottom: -20px;
    }
 
 }

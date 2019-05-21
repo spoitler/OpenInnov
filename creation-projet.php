@@ -24,5 +24,19 @@ echo $createur."<br>";
 echo $chefProjet."<br>";
 
 $bdd = getbdd();
+// $creation = insertProjet($bdd,$titre,$createur,$chefProjet,$descriptionC,$descriptionL);
+// if ($creation) {
+//    echo "reussi";
+// }else {
+//    // code...
+// }
 
-$creation = insertProjet($bdd,$titre,$createur,$chefProjet,$descriptionC,$descriptionL);
+try
+{
+    $creation = insertProjet($bdd,$titre,$createur,$chefProjet,$descriptionC,$descriptionL);
+}
+catch (Exception $e)
+{
+    $bdd = null;
+    die('Erreur : ' . $e->getMessage());
+}

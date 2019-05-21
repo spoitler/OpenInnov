@@ -4,7 +4,7 @@ function getbdd(){
 	$host = "127.0.0.1";
     $dbName = "stage";
     $login = "admin";
-    $password = "mydil123456";
+    $password = "ujhcLas3a";
 
     try
     {
@@ -19,7 +19,82 @@ function getbdd(){
     return $bdd;
 }
 
-function insertProjet(PDO $bdd, $email) {
+function getAllProjets(PDO $bdd){
+	$query = "SELECT * FROM projets,utilisateur WHERE id_utilisateur=createur";
+
+	$resultat = $bdd->prepare($query);
+	
+	$resultat->execute();
+
+	return $resultat->fetchAll(PDO::FETCH_OBJ);
+}
+
+function getUser($bdd, $nc){
+	$query = "SELECT * FROM utilisateur WHERE nom_complet=:nom_complet";
+
+	$resultat = $bdd->prepare($query);
+
+	$resultat->bindParam(":nom_complet", $nc);
+
+	$resultat->execute();
+
+	return $resultat->fetch(PDO::FETCH_OBJ);
+}
+
+function getUSerById($bdd, $id){
+	$query = "SELECT * FROM utilisateur WHERE id_utilisateur=:id";
+
+	$resultat = $bdd->prepare($query);
+
+	$resultat->bindParam(":id", $id);
+
+	$resultat->execute();
+
+	return $resultat->fetch(PDO::FETCH_OBJ);
+}
+
+function getProjets(PDO $bdd, $idUtilisateur){
+	$query = "SELECT * FROM projets,utilisateur WHERE chef_projet=id_utilisateur and id_utilisateur=:id";
+
+	$resultat = $bdd->prepare($query);
+
+   $resultat->bindParam(":id", $idUtilisateur);
+
+	$resultat->execute();
+
+	return $resultat->fetchAll(PDO::FETCH_OBJ);
+}
+
+function getProjet(PDO $bdd, $id){
+	$query = "SELECT * FROM projets WHERE id_projet=:id";
+
+	$resultat = $bdd->prepare($query);
+
+   $resultat->bindParam(":id", $id);
+
+	$resultat->execute();
+
+	return $resultat->fetch();
+}
+
+function majProjet($bdd, $id, $titre, $createur, $chefProjet, $descriptionC, $descriptionL){
+	// La requete de base
+	$query = "UPDATE projets SET titre=:titre, createur=:createur, chef_projet=:chefProjet, description_courte=:descriptionC, description_longue=:descriptionL WHERE id_projet=:id";
+	// On récupère tout le contenu de la table
+
+	$resultat = $bdd->prepare($query);
+
+	$resultat->bindParam(":id", $id);
+	$resultat->bindParam(":titre", $titre);
+	$resultat->bindParam(":createur", $createur);
+	$resultat->bindParam(":chefProjet", $chefProjet);
+	$resultat->bindParam(":descriptionC", $descriptionC);
+	$resultat->bindParam(":descriptionL", $descriptionL);
+
+	$resultat->execute();
+}
+
+function insertProjet(PDO $bdd, $titre, $createur, $chefProjet, $descriptionC, $descriptionL) {
     // La requete de base
     $query = "INSERT INTO projets (titre, createur, chef_projet, description_courte, description_longue) VALUES (:titre,:createur,:chefProjet,:descriptionC,:descriptionL)";
     // On récupère tout le contenu de la table
@@ -33,9 +108,6 @@ function insertProjet(PDO $bdd, $email) {
     $resultat->bindParam(":descriptionL", $descriptionL);
 
     $resultat->execute();
-
-    return $resultat->fetch(PDO::FETCH_OBJ);
-
 }
 
 function connection (){

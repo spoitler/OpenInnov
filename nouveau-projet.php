@@ -16,8 +16,8 @@
          <fieldset>
             <h2 class="fs-title">Nouveau Projet</h2>
             <input type="text" name="titre" placeholder="Nom du projet" required/>
-            <textarea id="descriptionC" name="descriptionC" placeholder="Description courte du projet (330 caractères maximum)" onkeyup="javascript:MaxLengthTextarea(this, 350);" required></textarea>
-            <textarea id="descriptionL" name="descriptionL" placeholder="Description longue du projet (4000 caractères maximum)" rows="10" onkeyup="javascript:MaxLengthTextarea(this, 4000);" required></textarea>
+            <textarea id="descriptionC" name="descriptionC" placeholder="Description courte du projet ( 150 caractères minimum - 330 caractères maximum )" onkeyup="javascript:MaxLengthTextarea(this,350);" required></textarea>
+            <textarea id="descriptionL" name="descriptionL" placeholder="Description longue du projet ( 4000 caractères maximum )" rows="10" onkeyup="javascript:MaxLengthTextarea(this, 4000);" required></textarea>
             <div class="wrapper">
                <p><input type="checkbox" name="cb" id="cb1" checked><label id="labelcb" for="cb1">Créateur + Chef de projet</label></p>
                <div class="popupinfo" onclick="myFunction()">
@@ -27,7 +27,7 @@
             </div>
 
          </fieldset>
-         <button id="creation" type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">
+         <button onclick="return minlength(150);" id="creation" type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">
             Créer le projet
          </button>
       </form>
@@ -38,10 +38,17 @@
            popup.classList.toggle("show");
 
          }
-         function MaxLengthTextarea(objettextarea,maxlength){
+         function MaxLengthTextarea(objettextarea,maxlength,minlenght){
             if (objettextarea.value.length > maxlength) {
                objettextarea.value = objettextarea.value.substring(0, maxlength);
                alert('Votre texte ne doit pas dépasser '+maxlength+' caractères!');
+            }
+         }
+         function minlength(min){
+            var textarea = document.getElementById('descriptionC').value.length;
+            if (textarea < min) {
+               alert('Votre texte ne doit pas être inférieur à '+min+' caractères!');
+               return false;
             }
          }
       </script>

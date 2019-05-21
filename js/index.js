@@ -10,6 +10,9 @@ $(document).ready(function() {
      $('.popup-box'+id).css("z-index", "1").delay(1000).removeClass('transform-out').addClass('transform-in');
      $('.overlay').delay(70).fadeIn(500);
      $('.cache'+id).fadeIn(500);
+     $('.cachepopup'+id).css("display","none");
+     $('.uncache'+id).css("height","auto");
+     $('.membresI'+id).css("position","relative");
      e.preventDefault();
   });
 
@@ -17,6 +20,9 @@ $(document).ready(function() {
      $('.overlay').delay(70).fadeOut(500);  //peut etre un delay la
      $('.popup-box'+id).css("z-index","").removeClass('transform-in').addClass('transform-out');    //peut etre un delay la
      $('.cache'+id).fadeOut(70);
+     $('.cachepopup'+id).css("display","block");
+      $('.uncache'+id).css("height","120px");
+      $('.membresI'+id).css("position","absolute");
      e.preventDefault();
   });
 

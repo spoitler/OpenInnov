@@ -181,7 +181,7 @@ li {
 }
 
 .description-projet{
-   height: auto;
+   height: 120px;
    width: 100%;
    font-size: 11px;
    text-align: left;
@@ -207,7 +207,7 @@ li {
    display: flex;
    vertical-align: middle;
    font-size: 11px;
-   margin: 30px 0 20px 0;
+   margin: 10px 0 20px 0;
 }
 
 .chef-Projet p{
@@ -238,7 +238,11 @@ li {
    float: right;
    position: absolute;
    right: 10px;
-   bottom: -5px;
+   bottom: 10px;
+}
+
+.container-icones-membres p{
+   margin: 0;
 }
 
 .icone-membres{
@@ -250,10 +254,15 @@ li {
    line-height: 1em;
 }
 
-.popup-btn{
+.popup-btn, .maj-projet{
    display: inline-block;
    width: 85%;
    max-width: 370px;
+}
+
+.lien-maj{
+   height: auto;
+   width: auto;
 }
 
 .overlay{
@@ -717,9 +726,8 @@ fieldset img{
 
 }
 
-
-@media (min-width: 900px){
-   .popup-btn{
+/* @media (min-width: 900px){
+   .popup-btn, .maj-projet{
       max-width: 450px;
    }
-}
+} */

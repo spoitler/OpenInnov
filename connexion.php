@@ -8,6 +8,7 @@ echo "test1";
 $bdd = getbdd();
 echo "test2";
 $user = getUser($bdd,$auth);
+echo $user;
 echo "test3";
 $_SESSION['user']['id'] = $user->id_utilisateur;
 echo "test4";

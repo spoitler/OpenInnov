@@ -7,3 +7,9 @@
    $baseDnAuth = "ou=users, dc=mydil, dc=fr";
    $passEncode = "SHA1";
    $passEncodePrefix = "{SHA}";
+
+// MYSQL variables
+   $host = "127.0.0.1";
+   $dbName = "stage";
+   $login = "admin";
+   $password = "mydil123456";

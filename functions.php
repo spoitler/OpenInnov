@@ -1,11 +1,11 @@
 <?php
 
 function getbdd(){
-	$host = "127.0.0.1";
-    $dbName = "stage";
-    $login = "admin";
-    $password = "ujhcLas3a";
-
+    include ("conf.php");
+	 // global $host;
+	 // global $dbName;
+	 // global $login;
+	 // global $password;
     try
     {
         $bdd = new PDO('mysql:host='.$host.';dbname='.$dbName.';charset=utf8', $login, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
@@ -23,7 +23,7 @@ function getAllProjets(PDO $bdd){
 	$query = "SELECT * FROM projets,utilisateur WHERE id_utilisateur=createur";
 
 	$resultat = $bdd->prepare($query);
-	
+
 	$resultat->execute();
 
 	return $resultat->fetchAll(PDO::FETCH_OBJ);

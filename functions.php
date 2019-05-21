@@ -1,7 +1,7 @@
 <?php
 
 function getbdd(){
-	 include ("functions.php");
+	 include ("conf.php");
     try
     {
         $bdd = new PDO('mysql:host='.$host.';dbname='.$dbName.';charset=utf8', $login, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));

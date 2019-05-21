@@ -1,11 +1,6 @@
 <?php
 
 function getbdd(){
-    // include ("conf.php");
-	 // // global $host;
-	 // // global $dbName;
-	 // // global $login;
-	 // // global $password;
 	 $host = "127.0.0.1";
     $dbName = "stage";
     $login = "admin";
@@ -19,6 +14,7 @@ function getbdd(){
         $bdd = null;
         die('Erreur : ' . $e->getMessage());
     }
+	 var_dump($bdd);
 
     return $bdd;
 }

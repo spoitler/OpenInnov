@@ -126,7 +126,7 @@ function connection (){
 
     // Connexion au serveur LDAP
         $ldapconn = ldap_connect($ldaphost,$ldapport);
-        // echo 'Le résultat de connexion est ' . $ldapconn . '<br />';
+        echo 'Le résultat de connexion est ' . $ldapconn . '<br />';
 
         if ($ldapconn) {
             // echo 'Liaison ...<br />';

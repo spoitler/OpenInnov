@@ -42,6 +42,8 @@ function getUser($bdd, $nc){
 
 	$resultat->execute();
 
+	echo $resultat;
+
 	return $resultat->fetch(PDO::FETCH_OBJ);
 }
 

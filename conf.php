@@ -12,4 +12,4 @@
    $host = "127.0.0.1";
    $dbName = "stage";
    $login = "admin";
-   $password = "ujhcLas3a";
+   $password = "midyl123456";

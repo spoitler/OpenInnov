@@ -25,7 +25,7 @@ function getAllProjets(PDO $bdd){
 	return $resultat->fetchAll(PDO::FETCH_OBJ);
 }
 
-function getUser(PDO $bdd, $nc){
+function getUser($bdd, $nc){
 	$query = "SELECT * FROM utilisateur WHERE nom_complet=:nom_complet";
 
 	$resultat = $bdd->prepare($query);
@@ -34,7 +34,7 @@ function getUser(PDO $bdd, $nc){
 
 	$resultat->execute();
 
-	return $resultat->fetch(PDO::FETCH_OBJ);
+	return $resultat->fetch();
 }
 
 function getUSerById($bdd, $id){

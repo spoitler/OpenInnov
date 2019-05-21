@@ -4,11 +4,11 @@ include ("functions.php");
 $auth = connection();
 $_SESSION['user']['cn'] = $auth;
 $bdd = getbdd();
-echo "test2";
+var_dump($bdd);
 $user = getUser($bdd,$auth);
-echo "test3";
+var_dump($user);
+echo $user;
 $_SESSION['user']['id'] = $user->id_utilisateur;
-echo "test4";
 if ($auth){
    header('Location: projets.php?cn='.$auth);
 }else {

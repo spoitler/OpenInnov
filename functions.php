@@ -34,6 +34,7 @@ function getAllProjets(PDO $bdd){
 }
 
 function getUser(PDO $bdd, $nc){
+	echo "bonjour";
 	$query = "SELECT * FROM utilisateur WHERE nom_complet=:nom_complet";
 
 	$resultat = $bdd->prepare($query);

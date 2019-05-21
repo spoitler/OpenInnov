@@ -1,10 +1,7 @@
 <?php
 
 function getbdd(){
-	 $host = "127.0.0.1";
-    $dbName = "stage";
-    $login = "admin";
-    $password = "mydil123456";
+	 include ("functions.php");
     try
     {
         $bdd = new PDO('mysql:host='.$host.';dbname='.$dbName.';charset=utf8', $login, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
@@ -14,7 +11,6 @@ function getbdd(){
         $bdd = null;
         die('Erreur : ' . $e->getMessage());
     }
-	 var_dump($bdd);
 
     return $bdd;
 }

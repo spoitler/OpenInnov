@@ -8,8 +8,8 @@
    $passEncode = "SHA1";
    $passEncodePrefix = "{SHA}";
 
-// // MYSQL variables
-//    $host = "127.0.0.1";
-//    $dbName = "stage";
-//    $login = "admin";
-//    $password = "ujhcLas3a";
+// MYSQL variables
+   $host = "127.0.0.1";
+   $dbName = "stage";
+   $login = "admin";
+   $password = "ujhcLas3a";

@@ -1,11 +1,15 @@
 <?php
 
 function getbdd(){
-    include ("conf.php");
-	 // global $host;
-	 // global $dbName;
-	 // global $login;
-	 // global $password;
+    // include ("conf.php");
+	 // // global $host;
+	 // // global $dbName;
+	 // // global $login;
+	 // // global $password;
+	 $host = "127.0.0.1";
+    $dbName = "stage";
+    $login = "admin";
+    $password = "mydil123456";
     try
     {
         $bdd = new PDO('mysql:host='.$host.';dbname='.$dbName.';charset=utf8', $login, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));

@@ -15,6 +15,18 @@ function getbdd(){
     return $bdd;
 }
 
+function addMembres(PDO $bdd, $createur, $idP){
+	$query = "UPDATE utilisateur SET projet=:idP WHERE id_utilisateur=:createur";
+
+	$resultat = $bdd->prepare($query);
+
+	$resultat->bindParam(":idP", $idP);
+	$resultat->bindParam(":createur", $createur);
+
+	$resultat->execute();
+
+}
+
 function getMembres(PDO $bdd, $idprojet){
 	$query = "SELECT * FROM utilisateur WHERE projet=:id";
 
@@ -74,7 +86,7 @@ function getUser(PDO $bdd, $nc){
 	return $resultat->fetch(PDO::FETCH_OBJ);
 }
 
-function getUSerById($bdd, $id){
+function getUserById($bdd, $id){
 	$query = "SELECT * FROM utilisateur WHERE id_utilisateur=:id";
 
 	$resultat = $bdd->prepare($query);
@@ -119,7 +131,7 @@ function getProjet(PDO $bdd, $id){
 
 	$resultat->execute();
 
-	return $resultat->fetch();
+	return $resultat->fetch(PDO::FETCH_OBJ	);
 }
 
 function majProjet($bdd, $id, $titre, $createur, $chefProjet, $descriptionC, $descriptionL){
@@ -153,6 +165,14 @@ function insertProjet(PDO $bdd, $titre, $createur, $chefProjet, $descriptionC, $
     $resultat->bindParam(":descriptionL", $descriptionL);
 
     $resultat->execute();
+
+	 $query = "SELECT LAST_INSERT_ID()";
+
+	 $resultat = $bdd->prepare($query);
+
+	 $resultat->execute();
+
+	 return $resultat->fetch(PDO::FETCH_OBJ);
 }
 
 function connection (){

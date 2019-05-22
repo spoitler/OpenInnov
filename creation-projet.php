@@ -24,19 +24,28 @@ echo $createur."<br>";
 echo $chefProjet."<br>";
 
 $bdd = getbdd();
-// $creation = insertProjet($bdd,$titre,$createur,$chefProjet,$descriptionC,$descriptionL);
-// if ($creation) {
-//    echo "reussi";
-// }else {
-//    // code...
-// }
 
-try
-{
-    $creation = insertProjet($bdd,$titre,$createur,$chefProjet,$descriptionC,$descriptionL);
-}
-catch (Exception $e)
-{
-    $bdd = null;
-    die('Erreur : ' . $e->getMessage());
+$user = getUserById($bdd, $createur);
+
+if (!empty($user->projet) && $chefProjet != 3) {
+   header('Location: nouveau-projet.php?Error='.true);
+}else {
+   try
+   {
+      $creation = insertProjet($bdd,$titre,$createur,$chefProjet,$descriptionC,$descriptionL);
+      $rid = new ArrayObject($creation);
+      $rid->asort();
+      $idP = $rid["LAST_INSERT_ID()"];
+      var_dump($user);
+      if (empty($user->projet) && $createur == $chefProjet) {
+         $addMembre = addMembres($bdd,$createur,$idP);
+      }elseif (empty($user->projet) && $createur != $chefProjet) {
+         addMembres($bdd,$createur,0);
+      }
+   }
+   catch (Exception $e)
+   {
+       $bdd = null;
+       die('Erreur : ' . $e->getMessage());
+   }
 }

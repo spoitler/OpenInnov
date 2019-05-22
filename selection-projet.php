@@ -19,6 +19,7 @@
       ?>
       <div class="main-container-projets"><?php
          foreach ($projets as $projet) {
+            $membres = getMembres($bdd,$projet->id_projet);
             if (!empty($projet->chef_projet)) {
                $chef_projet = getUserById($bdd, $projet->chef_projet);
             }
@@ -41,7 +42,7 @@
                            </div>
                            <div class="container-icones-membres">
                               <p><img src="img/membres.png" class="icone-membres" alt="membres" title="icone membres"/></p>
-                              <p class="nombres-membres">5/7</p>
+                              <p class="nombres-membres"><?= count($membres); ?>/7</p>
                            </div>
                         </div>
                      </div>

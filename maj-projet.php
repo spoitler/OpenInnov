@@ -14,15 +14,15 @@ if (isset($_POST['cb'])) {
    echo $chefProjet."<br>";
    $chefProjet = $createur;
 }else {
-   $chefProjet = "";
+   $chefProjet = 3;
    echo "false";
 }
 
-// echo $titre."<br>";
-// echo $descriptionC."<br>";
-// echo $descriptionL."<br>";
-// echo $createur."<br>";
-// echo $chefProjet."<br>";
+echo $titre."<br>";
+echo $descriptionC."<br>";
+echo $descriptionL."<br>";
+echo $createur."<br>";
+echo $chefProjet."<br>";
 
 $bdd = getbdd();
 

@@ -27,7 +27,7 @@
             </div>
 
          </fieldset>
-         <button onclick="return minlength(150);" id="creation" type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">
+         <button onclick="return minlength(150);" class="creation" type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">
             Créer le projet
          </button>
       </form>

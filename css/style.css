@@ -516,7 +516,7 @@ fieldset img{
    resize: none;
 }
 
-#creation{
+.creation{
    position: relative;
    height: 36px;
    min-width: 64px;
@@ -539,6 +539,10 @@ fieldset img{
    text-align: center;
    line-height: 36px;
    vertical-align: middle;
+}
+
+.suppresion-projet{
+   background-color: rgb(188, 32, 32);
 }
 
 /****************************\

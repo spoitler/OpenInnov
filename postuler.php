@@ -65,9 +65,10 @@
       </div>
       <div class="message-projet">
          <h2>Votre message</h2>
-         <form action="creation-projet.php" method="post" class="msform">
+         <form action="envoi-postuler.php" method="post" class="msform">
             <fieldset>
-               <textarea id="descriptionL" name="descriptionL" placeholder="Votre message au chef de projet" rows="10" onkeyup="javascript:MaxLengthTextarea(this, 4000);" required></textarea>
+               <textarea id="message" name="message" placeholder="Votre message au chef de projet" rows="10" onkeyup="javascript:MaxLengthTextarea(this, 4000);" required></textarea>
+               <input type="hidden" name="id" value="<?= $projet->id_projet ?>">
             </fieldset>
             <button onclick="return minlength(150);" id="creation" type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">
                Envoyer

@@ -15,6 +15,43 @@ function getbdd(){
     return $bdd;
 }
 
+function getMembres(PDO $bdd, $idprojet){
+	$query = "SELECT * FROM utilisateur WHERE projet=:id";
+
+	$resultat = $bdd->prepare($query);
+
+	$resultat->bindParam(":id", $idprojet);
+
+	$resultat->execute();
+
+	return $resultat->fetchAll(PDO::FETCH_OBJ);
+}
+
+function getcandidature(PDO $bdd, $idprojet){
+	$query = "SELECT * FROM candidature,utilisateur WHERE candidature.id_utilisateur=utilisateur.id_utilisateur and id_projet=:id";
+
+	$resultat = $bdd->prepare($query);
+
+	$resultat->bindParam(":id", $idprojet);
+
+	$resultat->execute();
+
+	return $resultat->fetchAll(PDO::FETCH_OBJ);
+}
+
+function envoiCandidature($bdd,$message,$idUtilisateur,$id_projet){
+	$query = "INSERT INTO candidature (message, id_utilisateur, id_projet) VALUES (:message,:idUtilisateur,:id_projet)";
+
+	$resultat = $bdd->prepare($query);
+
+	$resultat->bindParam(":message", $message);
+	$resultat->bindParam(":idUtilisateur", $idUtilisateur);
+	$resultat->bindParam(":id_projet", $id_projet);
+
+	$resultat->execute();
+
+}
+
 function getAllProjets(PDO $bdd){
 	$query = "SELECT * FROM projets,utilisateur WHERE id_utilisateur=createur";
 

@@ -27,9 +27,11 @@
       <div class="main-container-projets">
       <?php
       foreach ($projets as $projet) {
+         $membres = getMembres($bdd,$projet->id_projet);
          if (!empty($projet->chef_projet)) {
             $chef_projet = getUserById($bdd, $projet->chef_projet);
-         }?>
+         }
+         ?>
          <div class="popup-btn" id="<?= $projet->id_projet ?>">
             <div class="container-projet popup-box popup-box<?= $projet->id_projet ?> transform-out">
                <div class="sub-content">
@@ -55,22 +57,22 @@
                      </div>
                      <div class="membres cache cache<?= $projet->id_projet ?> info-projet line-height">
                         <h3>Membes :</h3><br>
-                        <div class="container-membres">
-                           <p>&nbsp;Romain BONNES - I5</p>
-                           <p>&nbsp;Romain BONNES - I5</p>
-                           <p>&nbsp;Romain BONNES - I5</p>
-                           <p>&nbsp;Romain BONNES - I5</p>
+                        <div class="container-membres"><?php
+                           foreach ($membres as $membre) { ?>
+                           <p>&nbsp;<?= $membre->nom_complet ?> - <?= $membre->classe ?></p>
+                        <?php } ?>
                         </div>
                      </div>
                      <div class="container-icones-membres membresI<?= $projet->id_projet ?>">
                         <p><img src="img/membres.png" class="icone-membres" alt="membres" title="icone membres"/></p>
-                        <p class="nombres-membres">5/7</p>
+                        <p class="nombres-membres"><?= count($membres); ?>/7</p>
                      </div>
                   </div>
                </div>
             </div>
          </div>
-      <?php } ?>
+      <?php
+       } ?>
       </div>
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>

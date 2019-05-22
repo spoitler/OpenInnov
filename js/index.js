@@ -13,7 +13,6 @@ $(document).ready(function() {
      $('.cachepopup'+id).css("display","none");
      $('.uncache'+id).css("height","auto");
      $('.membresI'+id).css("position","relative");
-     // e.preventDefault();
   });
 
   $('.popup-close').click(function(e) {
@@ -40,7 +39,6 @@ $(document).ready(function() {
      $('.modification').removeClass('menu-maj-current');
      $('.container-modification').css("display","none");
      $('.container-candidature').css("display","block");
-     e.preventDefault();
   });
 
 

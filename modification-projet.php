@@ -43,22 +43,20 @@
          </div>
          <div class="container-candidature">
             <div class="container-display">
-               <div class="box-candidature candidature1">
+         <?php
+         $candidatures = getcandidature($bdd,$id);
+
+            foreach ($candidatures as $candidature) {
+            ?>
+               <div class="box-candidature candidature candidature<?= $candidature->id_candidature; ?>">
                   <div class="title-candidature">
-                     <h3>Romain BONNES - B1</h3>
-                     <a href="#">Accepter</a>
+                     <h3><?= $candidature->nom_complet; ?> - <?= $candidature->classe; ?></h3>
+                     <a href="accepte-candidature.php?id=">Accepter</a>
                   </div>
                   <div class="trait"></div>
-                  <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi arcu nulla, volutpat quis laoreet ac, imperdiet at orci. Nullam ultricies molestie tellus, quis scelerisque diam elementum molestie. Duis posuere tempus nulla at molestie. Aliquam dapibus nisl vel turpis ultrices ullamcorper. Phasellus non porta enim. Aenean laoreet mauris eget ipsum ultricies, a pretium odio pulvinar. Ut sodales felis at ultricies blandit. Ut ut ex enim. Vestibulum quis fringilla sapien, pharetra sollicitudin erat. Morbi vehicula diam nec semper fermentum. Proin quis elit eu lectus iaculis ultrices. </p>
+                  <p class="message"><?= $candidature->message; ?></p>
                </div>
-               <div class="box-candidature candidature1">
-                  <div class="title-candidature">
-                     <h3>Romain BONNES - B1</h3>
-                     <a href="#">Accepter</a>
-                  </div>
-                  <div class="trait"></div>
-                  <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi arcu nulla, volutpat quis laoreet ac, imperdiet at orci. Nullam ultricies molestie tellus, quis scelerisque diam elementum molestie. Duis posuere tempus nulla at molestie. Aliquam dapibus nisl vel turpis ultrices ullamcorper. Phasellus non porta enim. Aenean laoreet mauris eget ipsum ultricies, a pretium odio pulvinar. Ut sodales felis at ultricies blandit. Ut ut ex enim. Vestibulum quis fringilla sapien, pharetra sollicitudin erat. Morbi vehicula diam nec semper fermentum. Proin quis elit eu lectus iaculis ultrices. </p>
-               </div>
+         <?php } ?>
             </div>
          </div>
       <script>

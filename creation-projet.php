@@ -38,7 +38,7 @@ if (!empty($user->projet) && $chefProjet != 3) {
       $idP = $rid["LAST_INSERT_ID()"];
       var_dump($user);
       if (empty($user->projet) && $createur == $chefProjet) {
-         $addMembre = addMembres($bdd,$createur,$idP);
+         addMembres($bdd,$createur,$idP);
       }elseif (empty($user->projet) && $createur != $chefProjet) {
          addMembres($bdd,$createur,0);
       }

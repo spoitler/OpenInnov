@@ -26,6 +26,14 @@ echo $chefProjet."<br>";
 
 $bdd = getbdd();
 
+$user = getUserById($bdd, $createur);
+
+if (empty($user->projet) && $chefProjet != 3) {
+   addMembres($bdd,$createur,$id);
+}elseif(!empty($user->projet) && $id == $user->projet && $chefProjet == 3) {
+   addMembres($bdd,$createur,0);
+}
+
 $maj = majProjet($bdd,$id,$titre,$createur,$chefProjet,$descriptionC,$descriptionL);
 
-header ('Location: modification-projet.php?id='.$id);
+header ('Location: selection-projet.php');

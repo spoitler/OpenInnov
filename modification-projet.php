@@ -39,8 +39,11 @@
                <button  class="creation" type="submit"  type="button" name="button">
                   Mettre à jour le projet
                </button>
-
+               <button class="creation suppresion-projet" type="submit"  type="button" name="button">
+                  Supprimer le projet
+               </button>
             </form>
+
          </div>
          <div class="container-candidature">
             <div class="container-display">

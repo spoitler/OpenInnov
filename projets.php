@@ -21,7 +21,8 @@
 
       $bdd = getbdd();
       $projets = getAllProjets($bdd);
-      // var_dump($projets);
+      $user = getUserById($bdd, $_SESSION['user']['id']);
+      // var_dump($_SESSION);
       ?>
       <div class="overlay popup-close"></div>
       <div class="main-container-projets">
@@ -38,7 +39,7 @@
                   <div class="title">
                      <h2><?= $projet->titre ?></h2>
                      <div class="cache cache<?= $projet->id_projet ?>">
-                        <a href="postuler.php?id=<?= $projet->id_projet ?>">Postuler</a>
+                        <a <?php if(!empty($user->projet)){ echo 'class="disabled"';} ?>href="postuler.php?id=<?= $projet->id_projet ?>">Postuler</a>
                      </div>
                   </div>
                   <div class="sub-content-projet">

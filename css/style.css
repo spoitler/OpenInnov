@@ -140,6 +140,11 @@ li {
       PAGE PROJETS
 \*********************/
 
+a.disabled {
+	pointer-events: none;
+	cursor: default;
+}
+
 .main-container-projets{
    position: relative;
    top: 40px;

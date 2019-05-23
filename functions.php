@@ -15,7 +15,18 @@ function getbdd(){
     return $bdd;
 }
 
-function addMembres(PDO $bdd, $createur, $idP){
+function rmMembres($bdd,$createur){
+	$query = "UPDATE utilisateur SET projet=:idP WHERE id_utilisateur=:createur";
+
+	$resultat = $bdd->prepare($query);
+
+	$resultat->bindParam(":idP", $idP);
+	$resultat->bindParam(":createur", $createur);
+
+	$resultat->execute();
+}
+
+function addMembres($bdd, $createur, $idP){
 	$query = "UPDATE utilisateur SET projet=:idP WHERE id_utilisateur=:createur";
 
 	$resultat = $bdd->prepare($query);

@@ -21,7 +21,7 @@
             <a href="#" class="candidature" onkeyup="javascript:menu();">Candidature</a>
          </div>
          <div class="container-modification">
-            <form action="maj-projet.php" method="post" class="msform form-maj">
+            <form action="maj-projet.php" method="post" id="lien-modif-proj" class="msform form-maj">
                <fieldset>
                   <h2 class="fs-title">Modification Projet</h2>
                   <input type="text" name="titre" placeholder="Nom du projet" value="<?= $projets->titre ?>" required/>
@@ -36,10 +36,10 @@
                   </div>
                </fieldset>
                <input type="hidden" name="id" value="<?= $id ?>">
-               <button  class="creation" type="submit"  type="button" name="button">
+               <button onclick="changelien('maj-projet.php');"  class="creation" type="submit"  type="button" name="button">
                   Mettre à jour le projet
                </button>
-               <button class="creation suppresion-projet" type="submit"  type="button" name="button">
+               <button onclick="changelien('suppr-projet.php');" class="creation suppresion-projet" type="submit"  type="button" name="button">
                   Supprimer le projet
                </button>
             </form>
@@ -73,5 +73,11 @@
       </script>
       <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
       <script  src="js/index.js"></script>
+      <script>
+         function changelien(lien) {
+            button = document.getElementById('lien-modif-proj');
+            button.setAttribute('action', lien);
+         }
+      </script>
    </body>
 </html>

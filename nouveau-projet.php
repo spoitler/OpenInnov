@@ -11,9 +11,14 @@
       <div class="header">
          <h1>création projet</h1>
       </div>
-      <?php include ("menu.php"); ?>
+      <?php include ("menu.php");?>
       <form action="creation-projet.php" method="post" class="msform">
          <fieldset>
+            <?php if (isset($_GET['Error'])) {
+               if ($_GET['Error'] == 1) {
+                  echo '<span id="Error">Vous ne pouvais pas créer de projet en tant que créateur et chef de projet plus d\'une fois ou en faisant déjà parti d\'un groupe</span>';
+               }
+            } ?>
             <h2 class="fs-title">Nouveau Projet</h2>
             <input type="text" name="titre" placeholder="Nom du projet" required/>
             <textarea id="descriptionC" name="descriptionC" placeholder="Description courte du projet ( 150 caractères minimum - 330 caractères maximum )" onkeyup="javascript:MaxLengthTextarea(this,350);" required></textarea>

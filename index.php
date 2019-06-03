@@ -1,3 +1,16 @@
+<?php
+session_start();
+// session_destroy();
+if (!empty($_SESSION['user']['connect'])) {
+   if ($_SESSION['user']['connect'] == true) {
+      var_dump($_SESSION);
+      header('Location: projets.php');
+   }
+}else {
+   session_destroy();
+   session_start();
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>

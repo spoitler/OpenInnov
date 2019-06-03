@@ -7,6 +7,7 @@ $descriptionC = $_POST['descriptionC'];
 $descriptionL = $_POST['descriptionL'];
 
 $createur = $_SESSION['user']['id'];
+var_dump($_SESSION);
 
 if (isset($_POST['cb'])) {
    $chefProjet = $_POST['cb'];
@@ -28,7 +29,7 @@ $bdd = getbdd();
 $user = getUserById($bdd, $createur);
 
 if (!empty($user->projet) && $chefProjet != 3) {
-   header('Location: nouveau-projet.php?Error='.true);
+   //header('Location: nouveau-projet.php?Error='.true);
 }else {
    try
    {
@@ -42,6 +43,7 @@ if (!empty($user->projet) && $chefProjet != 3) {
       }elseif (empty($user->projet) && $createur != $chefProjet) {
          addMembres($bdd,$createur,0);
       }
+      //header('Location: selection-projet.php');
    }
    catch (Exception $e)
    {

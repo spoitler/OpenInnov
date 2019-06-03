@@ -45,19 +45,6 @@
                         <h3>Créateur :</h3>
                         <p>&nbsp;<?= $projet->nom_complet ?> - <?= $projet->classe ?></p>
                      </div>
-                     <div class="membres info-projet line-height">
-                        <h3>Membes :</h3><br>
-                        <div class="container-membres">
-                           <p>&nbsp;Romain BONNES - I5</p>
-                           <p>&nbsp;Romain BONNES - I5</p>
-                           <p>&nbsp;Romain BONNES - I5</p>
-                           <p>&nbsp;Romain BONNES - I5</p>
-                        </div>
-                     </div>
-                     <div class="container-icones-membres membresI<?= $projet->id_projet ?>">
-                        <p><img src="img/membres.png" class="icone-membres" alt="membres" title="icone membres"/></p>
-                        <p class="nombres-membres">5/7</p>
-                     </div>
                   </div>
                </div>
             </div>
@@ -70,7 +57,7 @@
                <textarea id="message" name="message" placeholder="Votre message au chef de projet" rows="10" onkeyup="javascript:MaxLengthTextarea(this, 4000);" required></textarea>
                <input type="hidden" name="id" value="<?= $projet->id_projet ?>">
             </fieldset>
-            <button onclick="return minlength(150);" id="creation" type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">
+            <button class="creation" type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">
                Envoyer
             </button>
          </form>

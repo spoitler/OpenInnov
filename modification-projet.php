@@ -49,13 +49,16 @@
             <div class="container-display">
          <?php
          $candidatures = getcandidature($bdd,$id);
-
             foreach ($candidatures as $candidature) {
             ?>
                <div class="box-candidature candidature candidature<?= $candidature->id_candidature; ?>">
                   <div class="title-candidature">
                      <h3><?= $candidature->nom_complet; ?> - <?= $candidature->classe; ?></h3>
-                     <a href="accepte-candidature.php?id=">Accepter</a>
+                     <div class="container-button-cadidature">
+                        <a href="accepte-candidature.php?id=<?= $id ?>&idU=<?= $candidature->id_utilisateur; ?>">Accepter</a>
+                        <a href="suppr-candidature.php?id=<?= $candidature->id_candidature ?>">Refuser</a>
+                     </div>
+
                   </div>
                   <div class="trait"></div>
                   <p class="message"><?= $candidature->message; ?></p>

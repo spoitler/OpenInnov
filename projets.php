@@ -12,10 +12,6 @@
          <h1>PROJETS</h1>
       </div>
 <?php
-      if (!empty($_GET['cn'])) {
-         echo "Bonjour <strong>" . $_GET['cn'] . "</strong>";
-      }
-
       include ("menu.php");
       include ("functions.php");
 
@@ -57,10 +53,10 @@
                         <p>&nbsp;<?= $projet->nom_complet ?> - <?= $projet->classe ?></p>
                      </div>
                      <div class="membres cache cache<?= $projet->id_projet ?> info-projet line-height">
-                        <h3>Membes :</h3><br>
+                        <h3>Membes :</h3><br><br>
                         <div class="container-membres"><?php
                            foreach ($membres as $membre) { ?>
-                           <p>&nbsp;<?= $membre->nom_complet ?> - <?= $membre->classe ?></p>
+                           <p><?= $membre->nom_complet ?> - <?= $membre->classe ?></p>
                         <?php } ?>
                         </div>
                      </div>

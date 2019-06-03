@@ -15,6 +15,102 @@ function getbdd(){
     return $bdd;
 }
 
+function getAllUser($bdd){
+	$query = "SELECT * FROM utilisateur WHERE id_utilisateur != 3";
+
+	$resultat = $bdd->prepare($query);
+
+	$resultat->execute();
+
+  return $resultat->fetchAll();
+}
+
+function rmProjet($bdd,$id){
+	$query = "DELETE FROM projets WHERE id_projet=:id;UPDATE utilisateur SET projet=0 WHERE projet=:id;DELETE FROM candidature WHERE id_projet=:id";
+
+  	$resultat = $bdd->prepare($query);
+
+	$resultat->bindParam(":id",$id);
+
+	$resultat->execute();
+}
+
+function getVar($name)
+{
+    if (isset($_GET[$name]) && !empty($_GET[$name]))
+    {
+        return htmlspecialchars($_GET[$name]);
+    }
+    return false;
+}
+
+function postVar($name)
+{
+    if (isset($_POST[$name]) && !empty($_POST[$name]))
+    {
+        return htmlspecialchars($_POST[$name]);
+    }
+    return false;
+}
+
+function RequestUser($input,PDO $bdd){
+    if ($input == 1){
+        $users = selectUserWithProject($bdd);
+    }
+    elseif ($input == 2){
+        $users = selectUserWithoutProject($bdd);
+    }
+    else {
+        $users = selectAllUsers($bdd);
+    }
+
+    return $users;
+}
+
+function selectUserWithProject(PDO $bdd){
+
+ 	 $query = "SELECT * FROM utilisateur WHERE projet!=0 and id_utilisateur != 3";
+
+ 	 $resultat = $bdd->prepare($query);
+
+ 	 $resultat->execute();
+
+	return $resultat->fetchAll(PDO::FETCH_OBJ);
+}
+
+function selectUserWithoutProject(PDO $bdd){
+
+	 $query = "SELECT * FROM utilisateur WHERE projet=0 and id_utilisateur != 3";
+
+	 $resultat = $bdd->prepare($query);
+
+	 $resultat->execute();
+
+	return $resultat->fetchAll(PDO::FETCH_OBJ);
+}
+
+function selectAllUsers(PDO $bdd){
+
+	 $query = "SELECT * FROM utilisateur WHERE id_utilisateur != 3";
+
+	 $resultat = $bdd->prepare($query);
+
+	 $resultat->execute();
+
+	return $resultat->fetchAll(PDO::FETCH_OBJ);
+}
+
+function rmCandidature($bdd,$id){
+
+	$query = "DELETE FROM candidature WHERE id_candidature=:id";
+
+	$resultat = $bdd->prepare($query);
+
+	$resultat->bindParam(":id", $id);
+
+	$resultat->execute();
+}
+
 function rmMembres($bdd,$createur){
 	$query = "UPDATE utilisateur SET projet=:idP WHERE id_utilisateur=:createur";
 
@@ -186,15 +282,64 @@ function insertProjet(PDO $bdd, $titre, $createur, $chefProjet, $descriptionC, $
 	 return $resultat->fetch(PDO::FETCH_OBJ);
 }
 
-function connection (){
+function createUser($bdd, $nom, $classe, $email){
+	$query = "INSERT INTO utilisateur (nom_complet, classe, email, projet) VALUES (:nom,:classe,:email, 3)";
+
+	$resultat = $bdd->prepare($query);
+
+	$resultat->bindParam(":nom", $nom);
+	$resultat->bindParam(":classe", $classe);
+	$resultat->bindParam(":email", $email);
+
+	$resultat->execute();
+
+	return true;
+}
+
+function syncLdap($ldapusr,$ldappass){
+	include("conf.php");
+
+	$ldapconn = ldap_connect($ldaphost,$ldapport);
+	// echo 'Le résultat de connexion est ' . $ldapconn . '<br />';
+
+	if ($ldapconn) {
+		// echo 'Liaison ...<br />';
+		ldap_set_option($ldapconn, LDAP_OPT_PROTOCOL_VERSION, 3);
+		// Connexion au serveur LDAP
+		// echo $ldapUsrAdmin . '<br />';
+		// echo $ldapPassAdmin . '<br />';
+		$ldapbind = ldap_bind($ldapconn,$ldapUsrAdmin,$ldapPassAdmin);
+		// echo "connecté<br>";
+		$sr=ldap_search($ldapconn, $ldapUsreleve, "objectClass=*");
+
+		if (ldap_count_entries($ldapconn,$sr)== 0) {
+	      return false;
+	   }
+	   // echo 'Lecture des entrées ...<br />';
+	   $info = ldap_get_entries($ldapconn, $sr);
+		// var_dump($info);
+	   // echo 'Données pour ' . $info["count"] . ' entrées:<br />';
+	   for ($i=1; $i<$info["count"]; $i++) {
+			// echo "<br>";
+	      // echo 'dn est : ' . $info[$i]["dn"] . '<br />';
+	      // echo 'cn : ' . $info[$i]["cn"][0] . '<br />';
+			// if (!empty($info[$i]["description"][0])){
+			// 	echo 'classe : ' . $info[$i]["description"][0] . '<br />';
+			// }
+	   }
+		return $info;
+	}else {
+		echo "cennexion ldap imposible";
+		return false;
+	}
+
+}
+
+function connection ($ldapusr,$ldappass){
 
       include("conf.php");
 
-      if (!empty($_POST['username']) && !empty($_POST['password'])) {
-
-    // Eléments d'authentification LDAP
-        $ldapusr= $_POST['username'];     // DN ou RDN LDAP
-        $ldappass = $_POST['password'];  // Mot de passe
+      if (!empty($ldapusr) && !empty($ldappass)) {
 
     // Connexion au serveur LDAP
         $ldapconn = ldap_connect($ldaphost,$ldapport);
@@ -237,7 +382,14 @@ function identification ($ldapconn,$ldapusr,$ldappass){
 
    // echo "Connexion LDAP réussie..."."<br />";
    // echo "Recherchons (givenname=$ldapusr) ..."."<br />";                     //ce que nous allons chercher
-   $sr=ldap_search($ldapconn, $baseDnAuth, "(&(objectClass=*)(givenname=$ldapusr))");  // requete search
+	if ($ldapusr == "admin") {
+		echo "admin";
+		$sr=ldap_search($ldapconn, $ldapUsrAdmin, "(&(objectClass=*)(cn=$ldapusr))");
+	}else {
+		echo "normal";
+		$sr=ldap_search($ldapconn, $baseDnAuth, "(&(objectClass=*)(givenname=$ldapusr))");  // requete search
+	}
+
    // echo 'Le résultat de la recherche est ' . $sr . '<br />';
 
    // echo 'Le nombre d\'entrées retournées est ' . ldap_count_entries($ldapconn,$sr). '<br />';

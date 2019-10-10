@@ -5,7 +5,7 @@
    $ldapUsrAdmin = "cn=admin,dc=mydil,dc=fr";
    $ldapUsreleve = "ou=users,dc=mydil,dc=fr";  //pour la focntion sync bdd
    $ldapPassAdmin = "f43gh3tj";
-   $baseDnAuth = "ou=eleve, dc=mydil, dc=fr";
+   $baseDnAuth = "ou=users, dc=mydil, dc=fr";
    $passEncode = "SHA1";
    $passEncodePrefix = "{SHA}";
    $ldapEmail = "mail";

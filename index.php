@@ -1,15 +1,13 @@
 <?php
 session_start();
-// session_destroy();
 if (!empty($_SESSION['user']['connect'])) {
    if ($_SESSION['user']['connect'] == true) {
-      var_dump($_SESSION);
-      header('Location: projets.php');
+      header('Location: connexion.php');
    }
 }else {
    session_destroy();
    session_start();
-}
+// var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html>
@@ -57,9 +55,6 @@ if (!empty($_SESSION['user']['connect'])) {
                   <button id="login" type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">
                     Login
                   </button>
-                  <!-- <button id="forgot" type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">
-                    Forgot Password
-                  </button> -->
                 </div>
               </form>
             </div>
@@ -70,3 +65,5 @@ if (!empty($_SESSION['user']['connect'])) {
       <script  src="js/index.js"></script>
     </body>
 </html>
+<?php
+} ?>

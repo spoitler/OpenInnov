@@ -28,15 +28,21 @@
                   <textarea id="descriptionC" name="descriptionC" placeholder="Description courte du projet (330 caractères maximum)" onkeyup="javascript:MaxLengthTextarea(this, 350);" required><?= $projets->description_courte ?></textarea>
                   <textarea id="descriptionL" name="descriptionL" placeholder="Description longue du projet (4000 caractères maximum)" onkeyup="javascript:MaxLengthTextarea(this, 4000);" required><?= $projets->description_longue ?></textarea>
                   <div class="wrapper">
-                     <p><input type="checkbox" name="cb" id="cb1" <?php if ($projets->createur == $projets->chef_projet) {echo "checked";} ?>><label id="labelcb" for="cb1">Créateur + Chef de projet</label></p>
+                  <?php
+                  if (!empty($_SESSION['admin'])) {
+                     if ($_SESSION['admin'] != true) {?>
+                     <p><input type="checkbox" name="cb" id="cb1" <?php if ($projets->createur == $projets->chef_projet) {echo "checked";}?>><label id="labelcb" for="cb1">Créateur + Chef de projet</label></p>
                      <div class="popupinfo" onclick="myFunction()">
                         <p><img src="img/information.png" alt="information"></p>
-                        <p class="popuptexteinfo" id="myPopup" >Si la case est coché, le projet vous appartient. Sinon c'est une idée sans porteur de projet</p>
+                        <p class="popuptexteinfo" id="myPopup" >Si la case est coché, le projet vous appartient. Sinon c\'est une idée sans porteur de projet</p>
                      </div>
+                  <?php   }
+                  } ?>
+
                   </div>
                </fieldset>
                <input type="hidden" name="id" value="<?= $id ?>">
-               <button onclick="changelien('maj-projet.php');"  class="creation" type="submit"  type="button" name="button">
+               <button onclick="changelien('maj-projet.php');" class="creation" type="submit"  type="button" name="button">
                   Mettre à jour le projet
                </button>
                <button onclick="changelien('suppr-projet.php');" class="creation suppresion-projet" type="submit"  type="button" name="button">

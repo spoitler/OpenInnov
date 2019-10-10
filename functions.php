@@ -15,6 +15,27 @@ function getbdd(){
     return $bdd;
 }
 
+function searchUser(PDO $bdd, $user){
+	$query = "SELECT * FROM utilisateur WHERE nom_complet like '%$user%'";
+
+	$resultat = $bdd->prepare($query);
+
+	$resultat->execute();
+
+  return $resultat->fetchAll(PDO::FETCH_OBJ);
+}
+
+
+function searchProjet(PDO $bdd, $projet){
+	$query = "SELECT * FROM projets WHERE titre like '%$projet%'";
+
+	$resultat = $bdd->prepare($query);
+
+	$resultat->execute();
+
+  return $resultat->fetchAll(PDO::FETCH_OBJ);
+}
+
 function getAllUser($bdd){
 	$query = "SELECT * FROM utilisateur WHERE id_utilisateur != 3";
 
@@ -51,6 +72,40 @@ function postVar($name)
         return htmlspecialchars($_POST[$name]);
     }
     return false;
+}
+
+function selectProjetWithChefProjet($bdd){
+	$query = "SELECT * FROM projets WHERE chef_projet != 3";
+
+	$resultat = $bdd->prepare($query);
+
+	$resultat->execute();
+
+	return $resultat->fetchAll(PDO::FETCH_OBJ);
+}
+
+function selectProjetWithoutChefProjet($bdd){
+	$query = "SELECT * FROM projets WHERE chef_projet = 3";
+
+	$resultat = $bdd->prepare($query);
+
+	$resultat->execute();
+
+	return $resultat->fetchAll(PDO::FETCH_OBJ);
+}
+
+function RequestProjet($input,PDO $bdd){
+    if ($input == 1){
+        $projets = selectProjetWithChefProjet($bdd);
+    }
+    elseif ($input == 2){
+        $projets = selectProjetWithoutChefProjet($bdd);
+    }
+    else {
+        $projets = getAllProjets($bdd);
+    }
+
+    return $projets;
 }
 
 function RequestUser($input,PDO $bdd){
@@ -168,7 +223,6 @@ function envoiCandidature($bdd,$message,$idUtilisateur,$id_projet){
 	$resultat->bindParam(":id_projet", $id_projet);
 
 	$resultat->execute();
-
 }
 
 function getAllProjets(PDO $bdd){
@@ -182,11 +236,23 @@ function getAllProjets(PDO $bdd){
 }
 
 function getUser(PDO $bdd, $nc){
-	$query = "SELECT * FROM utilisateur WHERE nom_complet=:nom_complet";
+	$query = "SELECT * FROM utilisateur WHERE uid=:user";
 
 	$resultat = $bdd->prepare($query);
 
-	$resultat->bindParam(":nom_complet", $nc);
+	$resultat->bindParam(":user", $nc);
+
+	$resultat->execute();
+
+	return $resultat->fetch(PDO::FETCH_OBJ);
+}
+
+function getUserByUid(PDO $bdd, $nc){
+	$query = "SELECT * FROM utilisateur WHERE uid=:user";
+
+	$resultat = $bdd->prepare($query);
+
+	$resultat->bindParam(":user", $nc);
 
 	$resultat->execute();
 
@@ -282,18 +348,25 @@ function insertProjet(PDO $bdd, $titre, $createur, $chefProjet, $descriptionC, $
 	 return $resultat->fetch(PDO::FETCH_OBJ);
 }
 
-function createUser($bdd, $nom, $classe, $email){
-	$query = "INSERT INTO utilisateur (nom_complet, classe, email, projet) VALUES (:nom,:classe,:email, 3)";
+function createUser($bdd, $nom, $classe, $email, $uid){
+	$query = "INSERT INTO utilisateur (nom_complet, classe, email, projet, uid) VALUES (:nom,:classe,:email, 0, :uid)";
 
 	$resultat = $bdd->prepare($query);
 
 	$resultat->bindParam(":nom", $nom);
 	$resultat->bindParam(":classe", $classe);
 	$resultat->bindParam(":email", $email);
+	$resultat->bindParam(":uid", $uid);
 
 	$resultat->execute();
 
-	return true;
+	$query = "SELECT LAST_INSERT_ID()";
+
+	$resultat = $bdd->prepare($query);
+
+	$resultat->execute();
+
+	return $resultat->fetch();
 }
 
 function syncLdap($ldapusr,$ldappass){
@@ -332,7 +405,6 @@ function syncLdap($ldapusr,$ldappass){
 		echo "cennexion ldap imposible";
 		return false;
 	}
-
 }
 
 function connection ($ldapusr,$ldappass){
@@ -341,8 +413,10 @@ function connection ($ldapusr,$ldappass){
 
       if (!empty($ldapusr) && !empty($ldappass)) {
 
-    // Connexion au serveur LDAP
+ 		  // Connexion au serveur LDAP
         $ldapconn = ldap_connect($ldaphost,$ldapport);
+
+
         echo 'Le résultat de connexion est ' . $ldapconn . '<br />';
 
         if ($ldapconn) {
@@ -351,7 +425,10 @@ function connection ($ldapusr,$ldappass){
             // Connexion au serveur LDAP
             // echo $ldapUsrAdmin . '<br />';
             // echo $ldapPassAdmin . '<br />';
+
+				// Identification au serveur LDAP
             $ldapbind = ldap_bind($ldapconn,$ldapUsrAdmin,$ldapPassAdmin);
+
             // var_dump($ldapbind);
             // echo 'Le résultat de connexion est ' . $ldapbind . '<br />';
             // Vérification de l'authentification
@@ -384,15 +461,22 @@ function identification ($ldapconn,$ldapusr,$ldappass){
    // echo "Recherchons (givenname=$ldapusr) ..."."<br />";                     //ce que nous allons chercher
 	if ($ldapusr == "admin") {
 		echo "admin";
+
+		// recherche du cn (common name) égale a la valeur de la variable $ldapusr
 		$sr=ldap_search($ldapconn, $ldapUsrAdmin, "(&(objectClass=*)(cn=$ldapusr))");
+
 	}else {
 		echo "normal";
+<<<<<<< HEAD
 		$sr=ldap_search($ldapconn, $baseDnAuth, "(&(objectClass=*)(uid=$ldapusr))");  // requete search
+=======
+		$sr = ldap_search($ldapconn, $baseDnAuth, "(&(objectClass=*)(uid=$ldapusr))");  // requete search
+>>>>>>> 210c5b741faf6bd6457491b3f9c6569dde5df237
 	}
 
    // echo 'Le résultat de la recherche est ' . $sr . '<br />';
 
-   // echo 'Le nombre d\'entrées retournées est ' . ldap_count_entries($ldapconn,$sr). '<br />';
+   echo 'Le nombre d\'entrées retournées est ' . ldap_count_entries($ldapconn,$sr). '<br />';
    if (ldap_count_entries($ldapconn,$sr)== 0) {
       return false;
    }
@@ -406,12 +490,16 @@ function identification ($ldapconn,$ldapusr,$ldappass){
    //    echo 'premiere entree password : ' . $info[$i]["userpassword"][0] . '<br />';
    // }
    $user = $info[0]["dn"];
+	//$user = $info;
    // echo $user."<br />";
    $attr = "userpassword";
    $ldappass = base64_encode($passEncode($ldappass, TRUE ));
    $ldappass = $passEncodePrefix.$ldappass;
+
+	// si ldap_compare égale true alors on continue sinon on retourne une erreur
    if (ldap_compare($ldapconn, $user, $attr, $ldappass)) {
-      $user = $info[0]["cn"][0];
+      //$user = $info[0]["cn"][0];
+		$user = $info[0];
       // echo "connexion reussi";
       // echo $user;
       return $user;
@@ -419,6 +507,7 @@ function identification ($ldapconn,$ldapusr,$ldappass){
       // echo "Identifiant ou Mot de passe incorrect !";
       return false;
    }
+
    // Fermeture de la connexion
    ldap_close($ldapconn);
 }

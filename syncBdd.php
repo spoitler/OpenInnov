@@ -1,6 +1,7 @@
 <?php
 
 include ("functions.php");
+include ("conf.php");
 
 $auth = syncLdap("admin","f43gh3tj");
 
@@ -12,12 +13,12 @@ $idLdap = [];
 $existant = [];
 for ($i=1; $i < $tailleLdap+1; $i++) {
    for ($j=0; $j < $tailleBdd ; $j++) {
-      if (in_array($auth[$i]['cn'][0], $users[$j])) {
-         array_push($existant, $auth[$i]['cn'][0]);
+      if (in_array($auth[$i][$ldapFullName][0], $users[$j])) {
+         array_push($existant, $auth[$i][$ldapFullName][0]);
       }
    }
    if (!in_array($auth[$i]['cn'][0], $existant)) {
-      array_push($idLdap, array($auth[$i]['cn'][0] ,$auth[$i]['description'][0], $auth[$i]['mail'][0]));
+      array_push($idLdap, array($auth[$i][$ldapFullName][0] ,$auth[$i][$ldapClasse][0], $auth[$i][$ldapEmail][0]));
    }
 }
 
@@ -29,4 +30,4 @@ foreach ($idLdap as $user) {
    }
 }
 
-var_dump($idLdap);
+// var_dump($idLdap);

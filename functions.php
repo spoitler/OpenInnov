@@ -236,11 +236,23 @@ function getAllProjets(PDO $bdd){
 }
 
 function getUser(PDO $bdd, $nc){
-	$query = "SELECT * FROM utilisateur WHERE nom_complet=:nom_complet";
+	$query = "SELECT * FROM utilisateur WHERE uid=:user";
 
 	$resultat = $bdd->prepare($query);
 
-	$resultat->bindParam(":nom_complet", $nc);
+	$resultat->bindParam(":user", $nc);
+
+	$resultat->execute();
+
+	return $resultat->fetch(PDO::FETCH_OBJ);
+}
+
+function getUserByUid(PDO $bdd, $nc){
+	$query = "SELECT * FROM utilisateur WHERE uid=:user";
+
+	$resultat = $bdd->prepare($query);
+
+	$resultat->bindParam(":user", $nc);
 
 	$resultat->execute();
 
@@ -336,18 +348,25 @@ function insertProjet(PDO $bdd, $titre, $createur, $chefProjet, $descriptionC, $
 	 return $resultat->fetch(PDO::FETCH_OBJ);
 }
 
-function createUser($bdd, $nom, $classe, $email){
-	$query = "INSERT INTO utilisateur (nom_complet, classe, email, projet) VALUES (:nom,:classe,:email, 0)";
+function createUser($bdd, $nom, $classe, $email, $uid){
+	$query = "INSERT INTO utilisateur (nom_complet, classe, email, projet, uid) VALUES (:nom,:classe,:email, 0, :uid)";
 
 	$resultat = $bdd->prepare($query);
 
 	$resultat->bindParam(":nom", $nom);
 	$resultat->bindParam(":classe", $classe);
 	$resultat->bindParam(":email", $email);
+	$resultat->bindParam(":uid", $uid);
 
 	$resultat->execute();
 
-	return true;
+	$query = "SELECT LAST_INSERT_ID()";
+
+	$resultat = $bdd->prepare($query);
+
+	$resultat->execute();
+
+	return $resultat->fetch();
 }
 
 function syncLdap($ldapusr,$ldappass){
@@ -448,7 +467,7 @@ function identification ($ldapconn,$ldapusr,$ldappass){
 
 	}else {
 		echo "normal";
-		$sr = ldap_search($ldapconn, $baseDnAuth, "(&(objectClass=*)(givenname=$ldapusr))");  // requete search
+		$sr = ldap_search($ldapconn, $baseDnAuth, "(&(objectClass=*)(uid=$ldapusr))");  // requete search
 	}
 
    // echo 'Le résultat de la recherche est ' . $sr . '<br />';
@@ -467,6 +486,7 @@ function identification ($ldapconn,$ldapusr,$ldappass){
    //    echo 'premiere entree password : ' . $info[$i]["userpassword"][0] . '<br />';
    // }
    $user = $info[0]["dn"];
+	//$user = $info;
    // echo $user."<br />";
    $attr = "userpassword";
    $ldappass = base64_encode($passEncode($ldappass, TRUE ));
@@ -474,7 +494,8 @@ function identification ($ldapconn,$ldapusr,$ldappass){
 
 	// si ldap_compare égale true alors on continue sinon on retourne une erreur
    if (ldap_compare($ldapconn, $user, $attr, $ldappass)) {
-      $user = $info[0]["cn"][0];
+      //$user = $info[0]["cn"][0];
+		$user = $info[0];
       // echo "connexion reussi";
       // echo $user;
       return $user;

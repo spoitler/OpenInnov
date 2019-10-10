@@ -1,4 +1,5 @@
-<?php session_start();
+<?php
+session_start();
 if (!empty($_SESSION['user']['connect'])) {
    if ($_SESSION['user']['connect'] == true) {
       header('Location: connexion.php');

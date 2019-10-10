@@ -5,12 +5,7 @@ include ("functions.php");
 $ldapusr= $_POST['username'];     // DN ou RDN LDAP
 $ldappass = $_POST['password'];  // Mot de passe
 $auth = connection($ldapusr,$ldappass);
-<<<<<<< HEAD
 //var_dump($auth);
-=======
-var_dump($auth);
-// $auth = "admin";
->>>>>>> 210c5b741faf6bd6457491b3f9c6569dde5df237
 if ($auth){
    if ($auth == "admin") {
       $_SESSION['admin'] = true;

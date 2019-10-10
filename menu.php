@@ -7,7 +7,7 @@ if (empty($_SESSION['user'])) {
 <div class="container-menu">
    <div class="container-icones">
       <div class="icones">
-         <a href="projets.php"><p><img src="img/list.png" alt="liste projets"><span class="menu-texte-icones">projets</span></p></a>
+         <a href="projets.php"><p><img src="img/list.png" alt="liste projets"><span class="menu-texte-icones">Projets</span></p></a>
       </div>
       <div class="icones">
          <div class="icones-cross">
@@ -15,7 +15,7 @@ if (empty($_SESSION['user'])) {
          </div>
       </div>
       <div class="icones">
-         <a href="selection-projet.php"><p><img src="img/dark-project.png" alt="modification projet"><span class="menu-texte-icones">Modification Projet</span></p></a>
+         <a href="selection-projet.php"><p><img src="img/edit.png" alt="modification projet"><span class="menu-texte-icones">Modification Projet</span></p></a>
       </div>
       <?php
       if (!empty($_SESSION['admin'])) {

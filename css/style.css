@@ -13,6 +13,10 @@ a{
    display: block;
 }
 
+.input-group-append .btn{
+   z-index: 0;
+}
+
 .gradient--5 {
   --gradient-start: #5378E1;
   --gradient-end: #41D8DD;
@@ -128,7 +132,7 @@ li {
    line-height: 3em;
 }
 
-.icones img{
+.icones img, .edit-button{
    height: 25px;
 }
 

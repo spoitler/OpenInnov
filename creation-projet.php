@@ -29,7 +29,7 @@ $bdd = getbdd();
 $user = getUserById($bdd, $createur);
 
 if (!empty($user->projet) && $chefProjet != 3) {
-   //header('Location: nouveau-projet.php?Error='.true);
+   header('Location: nouveau-projet.php?Error='.true);
 }else {
    try
    {
@@ -43,7 +43,7 @@ if (!empty($user->projet) && $chefProjet != 3) {
       }elseif (empty($user->projet) && $createur != $chefProjet) {
          addMembres($bdd,$createur,0);
       }
-      //header('Location: selection-projet.php');
+      header('Location: selection-projet.php');
    }
    catch (Exception $e)
    {

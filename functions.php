@@ -387,7 +387,7 @@ function identification ($ldapconn,$ldapusr,$ldappass){
 		$sr=ldap_search($ldapconn, $ldapUsrAdmin, "(&(objectClass=*)(cn=$ldapusr))");
 	}else {
 		echo "normal";
-		$sr=ldap_search($ldapconn, $baseDnAuth, "(&(objectClass=*)(givenname=$ldapusr))");  // requete search
+		$sr=ldap_search($ldapconn, $baseDnAuth, "(&(objectClass=*)(uid=$ldapusr))");  // requete search
 	}
 
    // echo 'Le résultat de la recherche est ' . $sr . '<br />';

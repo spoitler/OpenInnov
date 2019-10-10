@@ -1,9 +1,10 @@
 <?php
 session_start();
+//var_dump($_SESSION);
 if (!empty($_SESSION['user']['connect'])) {
-   if ($_SESSION['user']['connect'] == true) {
-      header('Location: connexion.php');
-   }
+  if ($_SESSION['user']['connect'] == true) {
+    header('Location: projets.php');
+  }
 }else {
    session_destroy();
    session_start();

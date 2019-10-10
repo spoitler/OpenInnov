@@ -11,6 +11,11 @@
    $ldapEmail = "mail";
    $ldapClasse = "description";
    $ldapFullName = "cn";
+   $ldapClassB1 = "";
+   $ldapClassB2 = "";
+   $ldapClassB3 = "";
+   $ldapClassI4 = "";
+   $ldapClassI5 = "";
 
 // MYSQL variables
    $host = "127.0.0.1";

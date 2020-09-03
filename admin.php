@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+session_start();
+ if ($_SESSION["user"] != "admin"){
+   header('Location: projets.php');
+} ?>
 <html>
    <head>
       <meta charset="utf-8">
@@ -18,7 +22,7 @@
       $inputP = getVar("filterProjet");
       $searchUserPost = postVar("rechercheutilisateur");
       $searchProjetPost = postVar("rechercheprojet");
-      echo $searchProjetPost;
+      //echo $searchProjetPost;
       $users = RequestUser($inputU, $bdd);
       $projets = RequestProjet($inputP, $bdd);
       $email = "";
@@ -167,6 +171,7 @@
               </thead>
               <tbody>
               <?php foreach ($projets as $projet) {
+
                      $chef_projet = getUserById($bdd, $projet->chef_projet);
                      $createur = getUserById($bdd, $projet->createur);
                  ?>
@@ -174,9 +179,9 @@
                   <th scope="col"><?=$projet->id_projet ?></th>
                   <th scope="col"><?=$projet->titre ?></th>
                   <th scope="col"><?=$createur->nom_complet ?></th>
-                  <th scope="col"><?=$chef_projet->nom_complet?></th>
+                  <th scope="col"><?php if ($projet->chef_projet == 0) {echo "Libre -";}else{ echo $chef_projet->nom_complet;} ?></th>
                   <th scope="col"><?=$projet->description_courte ?></th>
-                  <th scope="col"><a href="modification-projet.php?id=<?=$projet->id_projet ?>"><img class="edit-button" src="img/edit.png" alt=""></a></th>
+                  <th scope="col"><a href="modification-projet.php?id=<?=$projet->id_projet ?>"><img class="edit-button" src="img/edit.png"></a></th>
               </tr>
               <?php }?>
               </tbody>

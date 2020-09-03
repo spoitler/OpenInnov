@@ -2,25 +2,25 @@
 session_start();
 include_once ('functions.php');
 
-$titre = $_POST['titre'];
-$descriptionC = $_POST['descriptionC'];
-$descriptionL = $_POST['descriptionL'];
+$titre = htmlspecialchars($_POST['titre']);
+$descriptionC = nl2br(htmlentities($_POST['descriptionC']));
+$descriptionL = getDescImg($_POST['descriptionL'], true);
 
 $createur = $_SESSION['user']['id'];
-var_dump($_SESSION);
+//var_dump($_SESSION);
 
 if (isset($_POST['cb'])) {
    $chefProjet = $_POST['cb'];
    echo $chefProjet."<br>";
    $chefProjet = $createur;
 }else {
-   $chefProjet = 3;
+   $chefProjet = 0;
    echo "false";
 }
 
-echo $titre."<br>";
-echo $descriptionC."<br>";
-echo $descriptionL."<br>";
+// echo $titre."<br>";
+// echo $descriptionC."<br>";
+// echo $descriptionL."<br>";
 echo $createur."<br>";
 echo $chefProjet."<br>";
 
@@ -28,8 +28,9 @@ $bdd = getbdd();
 
 $user = getUserById($bdd, $createur);
 
-if (!empty($user->projet) && $chefProjet != 3) {
+if (!empty($user->projet) && $chefProjet != 0) {
    header('Location: nouveau-projet.php?Error='.true);
+   echo "test";
 }else {
    try
    {

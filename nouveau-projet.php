@@ -27,7 +27,7 @@
                <p><input type="checkbox" name="cb" id="cb1" checked><label id="labelcb" for="cb1">Créateur + Chef de projet</label></p>
                <div class="popupinfo" onclick="myFunction()">
                   <p><img src="img/information.png" alt="information"></p>
-                  <p class="popuptexteinfo" id="myPopup" >Si la case est coché, le projet vous appartient. Sinon c'est une idée sans porteur de projet</p>
+                  <p class="popuptexteinfo" id="myPopup" >Si la case est coché, le projet vous appartient. Sinon c'est une idée sans chef de projet</p>
                </div>
             </div>
 

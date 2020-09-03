@@ -4,7 +4,7 @@ include_once ('functions.php');
 
 $bdd = getbdd();
 
-rmCandidature($bdd,$_GET['id']);
+rmCandidatureAdd($bdd,$_GET['idU']);
 addMembres($bdd, $_GET['idU'], $_GET['id']);
 
-header ('Location: modification-projet');
+header ('Location: modification-projet.php?id='.$_GET['id']);

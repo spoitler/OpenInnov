@@ -4,6 +4,8 @@ include_once ('functions.php');
 
 $bdd = getbdd();
 
-rmCandidature($bdd,$_GET['id']);
+rmCandidatureSupp($bdd,$_GET['idC']);
 
-header ('Location: modification-projet');
+$id = $_GET['id'];
+
+header ('Location: modification-projet.php?id='.$id);

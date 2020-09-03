@@ -15,14 +15,27 @@
       include ("menu.php");
       include ("functions.php");
 
+      $id = $_GET['id'];
+      $chef = $_GET['c'];
+
+      $idUtilisateur = $_SESSION['user']['id'];
+
       $bdd = getbdd();
 
-      $projet = getProjetPostuler($bdd, $_GET['id']);
+      $candidature = getCandidatureByUser($bdd, $id, $idUtilisateur);
+      $membres = getMembres($bdd, $id);
+
+      if ($chef == "true") {
+         addChef($bdd,$id,$idUtilisateur);
+         header('Location: selection-projet.php');
+      }
+
+      $projet = getProjetPostuler($bdd, $id);
 
       if (!empty($projet->chef_projet)) {
          $chef_projet = getUserById($bdd, $projet->chef_projet);
       }
-
+      //var_dump($membres);
       ?>
       <div class="main-container-projets">
          <div class="box-projet" id="<?= $projet->id_projet ?>">
@@ -50,17 +63,27 @@
             </div>
          </div>
       </div>
+      <?php if (!empty($candidature)) { ?>
+         <div class="message-projet">
+            <h2>Candidature deja envoyée</h2>
+         </div>
+      <?php }else if (count($membres) == 6) { ?>
+         <div class="message-projet">
+            <h2>Le projet n'a plus de place disponible</h2>
+         </div>
+      <?php }else { ?>
       <div class="message-projet">
          <h2>Votre message</h2>
          <form action="envoi-postuler.php" method="post" class="msform">
             <fieldset>
                <textarea id="message" name="message" placeholder="Votre message au chef de projet" rows="10" onkeyup="javascript:MaxLengthTextarea(this, 4000);" required></textarea>
-               <input type="hidden" name="id" value="<?= $projet->id_projet ?>">
+               <input type="hidden" name="id" value="<?= $projet->id_projet; ?>">
             </fieldset>
             <button class="creation" type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">
                Envoyer
             </button>
          </form>
       </div>
+   <?php } ?>
    </body>
 </html>

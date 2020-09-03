@@ -2,6 +2,7 @@ body{
    padding: 0;
    margin: 0;
    font-family: sans-serif,Arial;
+   overflow-x: hidden;
 }
 
 a{
@@ -140,9 +141,122 @@ li {
    display: none;
 }
 
+/********************\
+      PAGE News
+\*********************/
+
+.container-news-button{
+   background-color: #1cba46;
+   outline: none;
+   border: none;
+   border-radius: 3px;
+   color: #fff;
+   display: flex;
+   width: 50px;
+   height: 25px;
+}
+
+.container-news-button a{
+   display: flex;
+   line-height: 1.5em;
+   padding-right: 10px;
+   text-decoration: none;
+}
+
+.container-news-button a:hover{
+   color: #000;
+}
+
+.container-news-button p{
+   margin: 5px;
+   margin-right: 10px;
+}
+
+.container-news-button img{
+   height: 15px;
+   width: 15px;
+
+}
+
+.nouveau-news{
+   border: none;
+   background-color: #1cba46;
+   border-radius: 3px;
+}
+
 /*********************\
       PAGE PROJETS
 \*********************/
+
+.news-container{
+   position: relative;
+   width: 90%;
+   background-color: #d4d4d4;
+   margin: auto;
+}
+
+.news-text{
+   padding: 0px;
+}
+
+.news-text p {
+   padding: 10px;
+   font-size: 13px;
+}
+
+#block-search{
+   position: relative;
+   display: -ms-flexbox;
+   display: flex;
+   -ms-flex-wrap: wrap;
+   flex-wrap: wrap;
+   -ms-flex-align: stretch;
+   align-items: stretch;
+   width: 90%;
+   margin: auto;
+   margin-bottom: 20px;
+}
+
+#input-search{
+   display: block;
+   height: calc(2.25rem + 2px);
+   padding: 0.375rem 0.75rem;
+   font-size: 1rem;
+   font-weight: 400;
+   line-height: 1.5;
+   color: #495057;
+   background-color: #fff;
+   background-clip: padding-box;
+   border: 1px solid #ced4da;
+   border-radius: 0.25rem 0 0 0.25rem;
+   flex: 1 1 auto;
+   width: 1%;
+   box-sizing: border-box;
+   width: 1%;
+}
+
+#block-button-search{
+   display: flex;
+   margin-left: -1px;
+}
+
+#button-search{
+   cursor: pointer;
+   color: #6c757d;
+   /* border-color: #6c757d; */
+   border: 1px solid #6c757d;
+   padding: 0.375rem 0.75rem;
+   font-size: 1rem;
+   line-height: 1.5;
+   border-radius: 0 0.25rem 0.25rem 0;
+   -webkit-appearance: button;
+   text-transform: none;
+   overflow: visible;
+   margin: 0;
+   font-family: inherit;
+ /* background-color: transparent; */
+   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
 
 a.disabled {
 	pointer-events: none;
@@ -183,10 +297,17 @@ a.disabled {
    font-size: 9px;
    height: auto;
    line-height: 45px;
+   display: flex;
+   margin-top: 10px;
+   flex-wrap: wrap;
 }
 
 .title a{
    color: #fff;
+}
+
+.title h2{
+   margin: auto;
 }
 
 .description-projet{
@@ -289,12 +410,89 @@ a.disabled {
 
 .cache{
    display: none;
+   width: auto;
+   height: auto;
+   /* text-align: center; */
+   margin: 0 20px 0 0;
 }
 
 .cache a{
-   position: absolute;
-   right: 20px;
+   position: relative;
+   /* right: 20px; */
    top: 0;
+}
+
+/* .postpop{
+   float: right;
+}
+
+.popInf{
+    cursor: pointer;
+    line-height: 10px;
+}
+
+.popuptexteinfo {
+  visibility: hidden;
+  width: auto;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  transform: rotate(180deg);
+  top: 20px;
+}
+
+/* Popup arrow *//*
+.popuptexteinfo::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 14%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup *//*
+.show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+} */
+
+#imgPopup{
+   height: 10px;
+   width: 10px;
+   cursor: pointer;
+   position: absolute;
+   right: 23px;
+   top: 14px;
+}
+
+#access{
+   background-color: #4ede68;// #7ff094;
+   padding: 5px 10px;
+   border-radius: 10px;
+   height: 20px;
+   margin: 12px 0;
+   line-height: 2.3;
+   color: #000;
+   font-weight: bold;
+}
+
+.noAccess{
+   background-color: #787878;
+   padding: 5px 10px;
+   border-radius: 10px;
+   height: 20px;
+   margin: 12px 0;
+   line-height: 2.3;
+   font-weight: bold;
+   text-decoration: line-through;
 }
 
 .popup-box {
@@ -597,7 +795,7 @@ fieldset img{
    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.09);
    border-radius: 10px;
    margin: 0 10px 30px;
-   max-width: 700px;
+   width: 90%;
    padding: 0 10px 20px 10px;
    border: none;
 }
@@ -611,7 +809,7 @@ fieldset img{
 }
 
 .trait{
-   height: 0.7px;
+   height: 1px;
    background: grey;
    margin: 0 20px 10px 20px;
 }
@@ -721,6 +919,11 @@ fieldset img{
 .container{
    position: relative;
    top: 90px;
+}
+
+#table-membres{
+   position: relative;
+   top: 110px;
 }
 
 @media (min-width: 320px) and (max-width: 350px) {

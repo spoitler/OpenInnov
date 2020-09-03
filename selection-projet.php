@@ -20,9 +20,7 @@
       <div class="main-container-projets"><?php
          foreach ($projets as $projet) {
             $membres = getMembres($bdd,$projet->id_projet);
-            if (!empty($projet->chef_projet)) {
-               $chef_projet = getUserById($bdd, $projet->chef_projet);
-            }
+            $chef_projet = getUserById($bdd, $projet->chef_projet);
             ?>
                <a class="lien-maj" href="modification-projet.php?id=<?= $projet->id_projet ?>">
                   <div class="container-projet popup-box popup-box1 maj-projet transform-out">
@@ -38,11 +36,11 @@
                            </div>
                            <div class="chef-Projet line-height">
                               <h3>Chef de projet :</h3>
-                              <p>&nbsp;<?= $chef_projet->nom_complet ?> - <?= $chef_projet->classe ?></p>
+                              <p>&nbsp;<?php if($chef_projet == 0){ echo "Libre -";}else{echo $chef_projet->nom_complet ?> - <?= $chef_projet->classe;}  ?></p>
                            </div>
                            <div class="container-icones-membres">
                               <p><img src="img/membres.png" class="icone-membres" alt="membres" title="icone membres"/></p>
-                              <p class="nombres-membres"><?= count($membres); ?>/7</p>
+                              <p class="nombres-membres"><?= count($membres); ?>/6</p>
                            </div>
                         </div>
                      </div>
